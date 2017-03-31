@@ -1,0 +1,15 @@
+{
+  "name": "ngCalculator",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "DecaHub"
+  ],
+  "license": "SEE LICENSE IN license.md",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.6.3"
+  },
+  "version": "1.0.0",
+  "author": "DecaHub"
+}
