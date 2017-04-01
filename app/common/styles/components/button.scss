@@ -1,0 +1,23 @@
+@import "../constants";
+
+
+.dh-btn {
+	
+	display: inline-flex;
+	
+	flex-direction: row;
+	flex-wrap: nowrap;
+	
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	
+	height: $button-height;
+	width: $button-width;
+	
+	margin: $standard-margin;
+	
+	color: black;
+	background: #CCCCCC;
+	
+}
