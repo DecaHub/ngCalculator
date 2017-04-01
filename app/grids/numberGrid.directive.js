@@ -1,5 +1,15 @@
 "use strict";
 
+const NumberGridController = function (NumbersService) {
+	
+	const vm = this;
+	
+	vm.numbers = NumbersService.getNumbers();
+	
+};
+
+NumberGridController.$inject = ["NumbersService"];
+
 angular.module("grids")
 	.directive("dhNumberGrid", function () {
 		
@@ -7,7 +17,9 @@ angular.module("grids")
 			
 			restrict: "E",
 			templateUrl: "grids/numberGrid.template.html",
-			scope: {numbers: "<"}
+			scope: {numbers: "<"},
+			controller: NumberGridController,
+			controllerAs: "numGrid"
 			
 		};
 		
