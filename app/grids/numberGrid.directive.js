@@ -17,7 +17,6 @@ angular.module("grids")
 			
 			restrict: "E",
 			templateUrl: "grids/numberGrid.template.html",
-			scope: {numbers: "<"},
 			controller: NumberGridController,
 			controllerAs: "numGrid"
 			
