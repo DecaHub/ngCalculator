@@ -1,0 +1,22 @@
+@import "../constants";
+
+.number {
+
+	display: inline-flex;
+
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+	height: $button-height;
+	width: $button-width;
+
+	background: darkorange;
+	color: black;
+
+	margin: $standard-margin;
+
+}
