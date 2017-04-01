@@ -17,14 +17,13 @@
 	height: $button-height;
 	width: $button-width;
 	
-	//margin: $standard-margin;
-	
-	//border-right: solid 1px $grey-accent;
-	//border-bottom: solid 1px $grey-accent;
-	
-	//border-bottom: solid 1px $grey-accent;
-	
 	color: black;
 	background: #CCCCCC;
+	
+	&:active {
+		
+		background: #A3A3A3;
+		
+	}
 	
 }
