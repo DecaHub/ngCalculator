@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="main">
+<html lang="en" ng-app="main" ng-cloak ng-strict-di>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,15 +8,32 @@
 		<!-- bower:css -->
 		<!-- endinject -->
 		
+		<!-- inject:css-->
+		<link rel="stylesheet" href="dist/maybelline.css">
+		<!-- endinject -->
+	
 	</head>
 	<body>
 		<div class="container">
-			<h1>Project Structure generated with deca-angular</h1>
+			<h1>Calculator</h1>
+			
+			<dh-number-grid></dh-number-grid>
+			
 		</div>
 		
 		<!-- bower:js-->
 		<script src="lib/angular/angular.js"></script>
 		<!-- endinject -->
 		
+		<!-- inject:js -->
+		<script src="dist/main.app.js"></script>
+		<script src="dist/grids/grids.module.js"></script>
+		<script src="dist/numbers/numbers.module.js"></script>
+		<script src="dist/grids/numberGrid.directive.js"></script>
+		<script src="dist/numbers/number.directive.js"></script>
+		<script src="dist/main.controller.js"></script>
+		<script src="dist/numbers/numbers.controller.js"></script>
+		<!-- endinject -->
+	
 	</body>
 </html>
