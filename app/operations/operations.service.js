@@ -18,7 +18,7 @@ angular.module("operations")
 		
 		_operations.push(createOperationData("÷", "division"));
 		_operations.push(createOperationData("×", "multiplication"));
-		_operations.push(createOperationData("-", "subtraction"));
+		_operations.push(createOperationData("−", "subtraction"));
 		_operations.push(createOperationData("+", "addition"));
 		_operations.push(createOperationData("=", "resultant"));
 		
