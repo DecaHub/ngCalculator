@@ -12,6 +12,8 @@ $basic-width: $basic-button-width + $basic-button-margin;
 	width: $basic-width;
 	
 	background: red;
+	
+	font-family: $droid-sans-mono;
 }
 
 .processes {
