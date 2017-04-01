@@ -4,3 +4,9 @@ $standard-border-size: 5px;
 
 $button-width: 50px;
 $button-height: 50px;
+
+// Calc Constants
+
+$number-button-per-row: 3;
+$operation-button-per-row: 1;
+$basic-button-per-row: $number-button-per-row + $operation-button-per-row;
