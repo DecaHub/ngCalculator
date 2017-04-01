@@ -1,0 +1,30 @@
+@import "../constants";
+
+
+.dh-btn {
+	
+	display: inline-flex;
+	
+	box-sizing: border-box;
+	
+	flex-direction: row;
+	flex-wrap: nowrap;
+	
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	
+	height: $button-height;
+	width: $button-width;
+	
+	//margin: $standard-margin;
+	
+	//border-right: solid 1px $grey-accent;
+	//border-bottom: solid 1px $grey-accent;
+	
+	//border-bottom: solid 1px $grey-accent;
+	
+	color: black;
+	background: #CCCCCC;
+	
+}

@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>ngCalculator</title>
 		
+		<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+		
 		<!-- bower:css -->
 		<!-- endinject -->
 		
@@ -15,9 +17,8 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Calculator</h1>
 			
-			<dh-number-grid></dh-number-grid>
+			<dh-calculator-grid></dh-calculator-grid>
 			
 		</div>
 		
@@ -27,13 +28,22 @@
 		
 		<!-- inject:js -->
 		<script src="dist/main.app.js"></script>
+		<script src="dist/aux/auxiliary.module.js"></script>
 		<script src="dist/grids/grids.module.js"></script>
 		<script src="dist/numbers/numbers.module.js"></script>
+		<script src="dist/operations/operations.module.js"></script>
+		<script src="dist/aux/auxilary.directive.js"></script>
+		<script src="dist/grids/auxiliaryGrid.directive.js"></script>
+		<script src="dist/grids/boardGrid.directive.js"></script>
+		<script src="dist/grids/calculatorGrid.directive.js"></script>
 		<script src="dist/grids/numberGrid.directive.js"></script>
+		<script src="dist/grids/operationGrid.directive.js"></script>
 		<script src="dist/numbers/number.directive.js"></script>
+		<script src="dist/operations/operation.directive.js"></script>
+		<script src="dist/aux/auxiliary.service.js"></script>
 		<script src="dist/numbers/numbers.service.js"></script>
+		<script src="dist/operations/operations.service.js"></script>
 		<script src="dist/main.controller.js"></script>
-		<script src="dist/numbers/numbers.controller.js"></script>
 		<!-- endinject -->
 	
 	</body>
