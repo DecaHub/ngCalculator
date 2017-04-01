@@ -20,9 +20,17 @@ angular.module("auxiliary")
 		_aux.push(createAuxData("+/−", "posneg"));
 		_aux.push(createAuxData("%", "percentage"));
 		
+		const _dot = createAuxData(".", "dot");
+		
 		this.getAux = function () {
 			
 			return _aux;
+			
+		};
+		
+		this.getDot = function () {
+			
+			return _dot;
 			
 		}
 		
