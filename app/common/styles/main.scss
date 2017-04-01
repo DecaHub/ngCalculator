@@ -2,3 +2,20 @@
 
 @import "constants";
 @import "reset";
+
+html, body {
+	
+	height: 100%;
+	
+}
+
+.calc-container {
+	
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
+
+}
+
