@@ -1,0 +1,23 @@
+@import "../constants";
+
+.boardGrid {
+	
+	position: relative;
+	
+	height: $button-height;
+	
+	background: #3B3B3B;
+	color: white;
+	
+}
+
+#digitBox {
+	
+	position: absolute;
+	
+	padding: $standard-padding * 2;
+	
+	bottom: 0;
+	right: 0;
+	
+}

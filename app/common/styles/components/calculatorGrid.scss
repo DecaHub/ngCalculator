@@ -1,12 +1,23 @@
 @import "../constants";
 
+$basic-button-width: $button-width * $basic-button-per-row;
+$basic-button-margin: $standard-margin * $basic-button-per-row * 2;
+$basic-width: $basic-button-width + $basic-button-margin;
+
 .calculatorGrid {
 	
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: column nowrap;
+	
+	width: $basic-width;
 	
 	background: red;
+}
+
+.processes {
 	
+	display: flex;
+	flex-flow: row nowrap;
 	
 }
 
