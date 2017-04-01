@@ -11,16 +11,20 @@ Calculator made with Angular 1.6. This is an exercise in component-based archite
 * Operation buttons.
     * Division, multiplication, subtraction, addition.
 * Function buttons.
-    * Computer operation, clear board.
+    * Compute operation, clear board.
 * Calculator board.
     * Display current operation and result digits.
 * Symbol buttons.
-    * Percentage sign, +/- sign, decimal point.
+    * Percentage sign, +/- sign, decimal point. 
+
     
 
 ## Operations
 
 Operations occur between integers and decimal numbers.
+
+Operations will be handled as Angular services.
+
 
 ## Functions
 
@@ -35,4 +39,5 @@ Operations occur between integers and decimal numbers.
 * Percentage: creates the percentage rate of the given number. For example: `10 %` will result in `0.1` being shown.
  
 * +/- sign: assigns a negative or positive sign to the current number in the stack. The positive sign is not shown. 
+
 

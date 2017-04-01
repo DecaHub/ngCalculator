@@ -1,0 +1,32 @@
+@import "../constants";
+
+$double-width: $button-width * 2;
+$margin-two-button: $standard-margin * 2;
+$zero-width: $double-width + $margin-two-button;
+
+.number {
+
+	display: inline-flex;
+
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+	height: $button-height;
+	width: $button-width;
+
+	background: darkorange;
+	color: black;
+
+	margin: $standard-margin;
+
+}
+
+.zero {
+	
+	width: $zero-width;
+	
+}
