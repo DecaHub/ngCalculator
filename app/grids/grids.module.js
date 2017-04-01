@@ -1,3 +1,3 @@
 "use strict";
 
-angular.module("grids", ["numbers", "operations"]);
+angular.module("grids", ["numbers", "operations", "auxiliary"]);
