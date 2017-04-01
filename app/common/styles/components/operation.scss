@@ -2,6 +2,24 @@
 
 .operation {
 	
-	background: #F37F27;
+	background: $space-orange;
+	
+	color: white;
+	font-size: 140%;
+	
+	border-bottom: solid $standard-margin $space-grey;
+	border-left: solid $standard-margin $space-grey;
+	
+}
+
+
+
+div.operationGrid {
+	
+	dh-operation:last-child  .operation {
+		
+		border-bottom: 0;
+		
+	}
 	
 }

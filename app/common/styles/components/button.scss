@@ -5,6 +5,8 @@
 	
 	display: inline-flex;
 	
+	box-sizing: border-box;
+	
 	flex-direction: row;
 	flex-wrap: nowrap;
 	
@@ -15,7 +17,12 @@
 	height: $button-height;
 	width: $button-width;
 	
-	margin: $standard-margin;
+	//margin: $standard-margin;
+	
+	//border-right: solid 1px $grey-accent;
+	//border-bottom: solid 1px $grey-accent;
+	
+	//border-bottom: solid 1px $grey-accent;
 	
 	color: black;
 	background: #CCCCCC;

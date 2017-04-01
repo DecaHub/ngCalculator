@@ -1,31 +1,44 @@
 @import "../constants";
 
 $basic-button-width: $button-width * $basic-button-per-row;
-$basic-button-margin: $standard-margin * $basic-button-per-row * 2;
-$basic-width: $basic-button-width + $basic-button-margin;
+$basic-width: $basic-button-width;
 
 .calculatorGrid {
+	
+	position: absolute;
+	
+	box-sizing: border-box;
+
+	left: 200px;
+	top: 100px;
 	
 	display: flex;
 	flex-flow: column nowrap;
 	
-	width: $basic-width;
-	
-	background: red;
-	
 	font-family: $droid-sans-mono;
+	
+	border: solid 1px $space-grey;
+	border-radius: 5px;
+	overflow: hidden;
+	
+	box-shadow: 17px 31px 75px -5px rgba(0,0,0,0.32);
+
 }
 
 .processes {
 	
 	display: flex;
 	flex-flow: row nowrap;
+	box-sizing: border-box;
+	
+	//margin: $standard-margin;
 	
 }
 
 .auxNumberGrid {
 	
 	display: flex;
+	box-sizing: border-box;
 	
 	flex-flow: column nowrap;
 	

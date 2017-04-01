@@ -1,14 +1,45 @@
 @import "../constants";
 
 $double-width: $button-width * 2;
-$margin-two-button: $standard-margin * 2;
-$zero-width: $double-width + $margin-two-button;
+$zero-width: $double-width;
 
 .number {
-
+	
 	background: #D9D9D9;
+	
+	border-bottom: solid $standard-margin $space-grey;
+	
+	font-size: 150%;
 
 }
+
+div.numberGrid {
+	
+	dh-number:nth-child(3n + 1) .number {
+		
+		border-right: solid $standard-margin $space-grey;
+		
+	}
+	
+	dh-number:nth-child(3n + 2) .number {
+		
+		border-right: solid $standard-margin $space-grey;
+		
+	}
+	
+	dh-number:nth-child(3n + 3) .number {
+		
+		
+	}
+	
+	dh-number:nth-child(n + 10) .number {
+		
+		border-bottom: 0;
+		
+	}
+	
+}
+
 
 .zero {
 	

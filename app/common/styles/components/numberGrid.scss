@@ -1,18 +1,16 @@
 @import "../constants";
 
 $total-number-buttons-width: $button-width * $number-button-per-row;
-$total-number-buttons-margins: $standard-margin * $number-button-per-row * 2;
-$number-grid-width: $total-number-buttons-width + $total-number-buttons-margins;
+$number-grid-width: $total-number-buttons-width;
 
 .numberGrid {
 	
 	display: flex;
+	box-sizing: border-box;
 	
 	flex-direction: row;
 	flex-wrap: wrap;
 	
 	width: $number-grid-width;
-	
-	background: dimgrey;
 	
 }

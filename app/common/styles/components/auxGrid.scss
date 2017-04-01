@@ -3,9 +3,8 @@
 .auxGrid {
 	
 	display: flex;
-	
 	flex-flow: row nowrap;
 	
-	background: orange;
+	box-sizing: border-box;
 	
 }
