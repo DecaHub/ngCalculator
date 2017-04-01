@@ -5,17 +5,16 @@ $basic-width: $basic-button-width;
 
 .calculatorGrid {
 	
-	position: absolute;
+	margin: 0 auto;
 	
 	box-sizing: border-box;
-
-	left: 200px;
-	top: 100px;
+	
+	width: $basic-width;
 	
 	display: flex;
 	flex-flow: column nowrap;
 	
-	font-family: $droid-sans-mono;
+	font-family: $lato;
 	
 	border: solid 1px $space-grey;
 	border-radius: 5px;
@@ -30,6 +29,8 @@ $basic-width: $basic-button-width;
 	display: flex;
 	flex-flow: row nowrap;
 	box-sizing: border-box;
+	
+	user-select: none;
 	
 	//margin: $standard-margin;
 	
