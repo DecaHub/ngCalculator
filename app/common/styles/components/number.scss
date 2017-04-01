@@ -1,5 +1,9 @@
 @import "../constants";
 
+$double-width: $button-width * 2;
+$margin-two-button: $standard-margin * 2;
+$zero-width: $double-width + $margin-two-button;
+
 .number {
 
 	display: inline-flex;
@@ -19,4 +23,10 @@
 
 	margin: $standard-margin;
 
+}
+
+.zero {
+	
+	width: $zero-width;
+	
 }
