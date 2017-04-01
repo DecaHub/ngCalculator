@@ -8,6 +8,6 @@ angular.module("grids")
 			restrict: "E",
 			templateUrl: "grids/boardGrid.template.html"
 			
-		}
+		};
 		
 	});
