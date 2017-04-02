@@ -8,6 +8,7 @@
   "license": "SEE LICENSE IN license.md",
   "private": true,
   "dependencies": {
+    "jquery": "^3.2.1",
     "angular": "^1.6.3"
   },
   "version": "1.0.0",
