@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="main" ng-cloak ng-strict-di>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ngCalculator</title>
+		
+		<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Quicksand:300" rel="stylesheet">
+		
+		<!-- bower:css -->
+		<!-- endinject -->
+		
+		<!-- inject:css-->
+		<link rel="stylesheet" href="main.css">
+		<!-- endinject -->
+	
+	</head>
+	<body>
+		
+		<h3 class="instructions">To move the calculator anywhere on the screen, hold a left click on the result board and drag it.</h3>
+		
+		<div class="calc-container">
+			
+			<dh-calculator-grid></dh-calculator-grid>
+			
+			
+		</div>
+		
+		<!-- bower:js-->
+		<script src="lib/jquery/dist/jquery.js"></script>
+		<script src="lib/angular/angular.js"></script>
+		<!-- endinject -->
+		
+		<!-- inject:js -->
+		<script src="main.app.js"></script>
+		<script src="aux/auxiliary.module.js"></script>
+		<script src="grids/grids.module.js"></script>
+		<script src="numbers/numbers.module.js"></script>
+		<script src="operations/operations.module.js"></script>
+		<script src="aux/auxilary.directive.js"></script>
+		<script src="grids/auxiliaryGrid.directive.js"></script>
+		<script src="grids/boardGrid.directive.js"></script>
+		<script src="grids/calculatorGrid.directive.js"></script>
+		<script src="grids/numberGrid.directive.js"></script>
+		<script src="grids/operationGrid.directive.js"></script>
+		<script src="numbers/number.directive.js"></script>
+		<script src="operations/operation.directive.js"></script>
+		<script src="aux/auxiliary.service.js"></script>
+		<script src="grids/boardGrid.service.js"></script>
+		<script src="numbers/numbers.service.js"></script>
+		<script src="operations/operations.service.js"></script>
+		<script src="main.controller.js"></script>
+		<!-- endinject -->
+	
+	</body>
+</html>
