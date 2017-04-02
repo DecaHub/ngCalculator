@@ -7,6 +7,15 @@ html, body {
 	
 	height: 100%;
 	
+	font-family: $quicksand;
+	
+}
+
+.instructions {
+	
+	padding: $standard-padding * 5;
+	font-size: 120%;
+	
 }
 
 .calc-container {
