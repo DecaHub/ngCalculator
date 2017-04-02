@@ -11,6 +11,15 @@
 	border-bottom: solid $standard-margin $space-grey;
 	border-left: solid $standard-margin $space-grey;
 	
+	&:active {
+		
+		background: #B5601C;
+		color: #6F655B;
+		
+		border: solid $standard-margin #6F655B;
+		
+	}
+	
 }
 
 

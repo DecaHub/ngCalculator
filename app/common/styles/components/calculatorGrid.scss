@@ -21,6 +21,9 @@ $basic-width: $basic-button-width;
 	overflow: hidden;
 	
 	box-shadow: 17px 31px 75px -5px rgba(0,0,0,0.32);
+	
+	cursor: default;
+	user-select: none;
 
 }
 
@@ -29,8 +32,6 @@ $basic-width: $basic-button-width;
 	display: flex;
 	flex-flow: row nowrap;
 	box-sizing: border-box;
-	
-	user-select: none;
 	
 	//margin: $standard-margin;
 	
