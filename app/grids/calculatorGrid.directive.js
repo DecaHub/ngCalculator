@@ -37,8 +37,6 @@ angular.module("grids")
 					
 				}
 				
-				console.log(element);
-				
 				board.css({
 					
 					cursor: "pointer"
