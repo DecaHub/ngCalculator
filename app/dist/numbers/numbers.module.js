@@ -1,0 +1,4 @@
+"use strict";
+
+angular.module("numbers", []);
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm51bWJlcnMvbnVtYmVycy5tb2R1bGUuanMiXSwibmFtZXMiOlsiYW5ndWxhciIsIm1vZHVsZSJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUFBLFFBQVFDLE1BQVIsQ0FBZSxTQUFmLEVBQTBCLEVBQTFCIiwiZmlsZSI6Im51bWJlcnMvbnVtYmVycy5tb2R1bGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyJcInVzZSBzdHJpY3RcIjtcblxuYW5ndWxhci5tb2R1bGUoXCJudW1iZXJzXCIsIFtdKTtcbiJdfQ==
