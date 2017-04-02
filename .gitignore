@@ -309,11 +309,11 @@ bh_unicode_properties.cache
 GitHub.sublime-settings
 
 
-### grunt ###
-# Grunt usually compiles files inside this directory
-dist/
-
-# Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
-.tmp/
+#### grunt ###
+## Grunt usually compiles files inside this directory
+#dist/
+#
+## Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
+#.tmp/
 
 .idea
