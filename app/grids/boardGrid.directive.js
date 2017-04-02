@@ -19,6 +19,34 @@ angular.module("grids")
 					
 					scope.displayNumber = newVal;
 					
+				});
+				
+				let digitBox = $("#digitBox");
+			
+				let digitBoxFontSize = parseInt($(digitBox).css('font-size'));
+				let digitBoxFontPadding = parseInt($(digitBox).css('padding'));
+				
+				let maxWidth = $(".boardGrid").width() - digitBoxFontPadding * 2;
+				
+				scope.$watch(function () {
+					
+					return digitBox.width();
+					
+					
+				}, function (newVal, oldVal) {
+					
+					if (newVal > maxWidth) {
+						
+						digitBoxFontSize -= 1;
+						
+						digitBox.css({
+							
+							fontSize: digitBoxFontSize + "px"
+							
+						});
+						
+					}
+					
 				})
 				
 			}
