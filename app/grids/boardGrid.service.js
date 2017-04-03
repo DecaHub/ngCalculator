@@ -32,7 +32,16 @@ angular.module("grids")
 			
 			if (!inputDirty) {
 				
-				currentNumber = "";
+				if (digit === 0) {
+					
+					currentNumber = 0;
+					return;
+					
+				} else {
+					
+					currentNumber = "";
+					
+				}
 				
 			}
 			
