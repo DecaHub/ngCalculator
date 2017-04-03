@@ -1,3 +1,4 @@
-<div ng-class="{'dh-btn': true, 'aux': true, 'dot': aux == '.'}">
-	{{::aux}}
+<div ng-class="{'dh-btn': true, 'aux': true, 'dot': aux.label == 'dot'}"
+     ng-attr-clear-board="aux.label === 'clear'">
+	{{::aux.symbol}}
 </div>
