@@ -1,5 +1,7 @@
 "use strict";
 
+/* global $ */
+
 angular.module("grids")
 	.directive("dhBoardGrid", ["BoardGridService", function (BoardGridService) {
 		
@@ -21,12 +23,12 @@ angular.module("grids")
 					
 				});
 				
-				let digitBox = $("#digitBox");
+				const digitBox = $("#digitBox");
 			
-				let digitBoxFontSize = parseInt($(digitBox).css('font-size'));
-				let digitBoxFontPadding = parseInt($(digitBox).css('padding'));
+				let digitBoxFontSize = parseInt($(digitBox).css("font-size"), 10);
+				const digitBoxFontPadding = parseInt($(digitBox).css("padding"), 10);
 				
-				let maxWidth = $(".boardGrid").width() - digitBoxFontPadding * 2;
+				const maxWidth = $(".boardGrid").width() - (digitBoxFontPadding * 2);
 				
 				scope.$watch(function () {
 					
@@ -39,15 +41,11 @@ angular.module("grids")
 						
 						digitBoxFontSize -= 1;
 						
-						digitBox.css({
-							
-							fontSize: digitBoxFontSize + "px"
-							
-						});
+						digitBox.css({fontSize: `${digitBoxFontSize}px`});
 						
 					}
 					
-				})
+				});
 				
 			}
 			

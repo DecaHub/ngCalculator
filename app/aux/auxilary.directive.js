@@ -9,7 +9,7 @@ angular.module("auxiliary")
 			templateUrl: "aux/auxiliary.template.html",
 			scope: {aux: "<"}
 			
-		}
+		};
 		
 	});
 
