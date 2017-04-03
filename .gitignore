@@ -317,3 +317,5 @@ GitHub.sublime-settings
 #.tmp/
 
 .idea
+
+/app/dist/

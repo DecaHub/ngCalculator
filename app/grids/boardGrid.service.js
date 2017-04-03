@@ -5,7 +5,7 @@ angular.module("grids")
 		
 		let emptyBoard = true;
 		
-		let numberStack = [];
+		const numberStack = [];
 		
 		let currentNumber = null;
 		let currentOperation = null;
@@ -32,6 +32,14 @@ angular.module("grids")
 			
 			if (!inputDirty) {
 				
+				if (digit === 0) {
+					
+					currentNumber = 0;
+					
+					return;
+					
+				}
+				
 				currentNumber = "";
 				
 			}
@@ -47,29 +55,29 @@ angular.module("grids")
 
 		};
 		
-		let executeOperation = function () {
+		const executeOperation = function () {
 			
 			console.log(`Executing ${currentOperation}`);
 			
-			let a = numberStack.shift();
-			let b = numberStack.shift();
+			const digitA = numberStack.shift();
+			const digitB = numberStack.shift();
 			
 			switch (currentOperation) {
 				
 				case "addition":
-					currentOperationResult = a + b;
+					currentOperationResult = digitA + digitB;
 					break;
 				case "subtraction":
-					currentOperationResult = a - b;
+					currentOperationResult = digitA - digitB;
 					break;
 				case "multiplication":
-					currentOperationResult = a * b;
+					currentOperationResult = digitA * digitB;
 					break;
 				case "division":
-					currentOperationResult = a / b;
+					currentOperationResult = digitA / digitB;
 					break;
 				default:
-					console.log(`Operation has not been created.`);
+					console.log("Operation has not been created.");
 					
 			}
 			
@@ -86,7 +94,7 @@ angular.module("grids")
 					
 					executeOperation();
 					
-					numberStack.push(parseInt(currentNumber));
+					numberStack.push(parseInt(currentNumber, 10));
 					
 					console.log(numberStack);
 					
@@ -96,8 +104,10 @@ angular.module("grids")
 				
 			}
 			
-			// If there is nothing in numberStack & there is no input, do nothing
-			// If there is nothing in numberStack & there is input, define an operation
+			/**
+			 * If there is nothing in numberStack & there is no input, do nothing
+			 * If there is nothing in numberStack & there is input, define an operation
+			 */
 			
 			if (numberStack.length === 0 && !inputDirty) {
 				
@@ -109,16 +119,17 @@ angular.module("grids")
 				
 				currentOperation = op;
 				
-				numberStack.push(parseInt(currentNumber));
+				numberStack.push(parseInt(currentNumber, 10));
 				console.log(numberStack);
 				inputDirty = false;
 				
 			}
 			
-			// If there is one element in numberStack & there is no input,
-			// define an operation or allow to switch operations
-			// If there is one element in numberStack & there is input,
-			// push the input into numberStack
+			/** If there is one element in numberStack & there is no input,
+			 * define an operation or allow to switch operations
+			 * If there is one element in numberStack & there is input,
+			 * push the input into numberStack
+			 */
 			
 			if (numberStack.length === 1 && !inputDirty) {
 				
@@ -128,21 +139,25 @@ angular.module("grids")
 				
 			} else if (numberStack.length === 1 && inputDirty) {
 				
-				numberStack.push(parseInt(currentNumber));
+				numberStack.push(parseInt(currentNumber, 10));
 				console.log(numberStack);
 				inputDirty = false;
 				
-				// This will make the execution block to run.
-				// The operation that was assigned to trigger the execution
-				// will be stored after the execution is done as it will
-				// leave one element in the stack ready to an operation
+				/**
+				 * This will make the execution block to run.
+				 * The operation that was assigned to trigger the execution
+				 * will be stored after the execution is done as it will
+				 * leave one element in the stack ready to an operation
+				 */
 				
 			}
 			
-			// If there are two elements in numberStack,
-			// execute the current operation
+			/**
+			 * If there are two elements in numberStack,
+			 * execute the current operation
+			 */
 			
-			if (numberStack.length == 2) {
+			if (numberStack.length === 2) {
 				
 				console.log("Execute Operation");
 				
@@ -150,7 +165,7 @@ angular.module("grids")
 				
 				// Operation is complete. Add result to numberStack
 				
-				numberStack.push(parseInt(currentNumber));
+				numberStack.push(parseInt(currentNumber, 10));
 				
 				console.log(numberStack);
 				
@@ -160,5 +175,21 @@ angular.module("grids")
 			}
 			
 		};
+		
+		this.clearBoard = function () {
+			
+			console.log("CLEAR");
+			
+			emptyBoard = true;
+			
+			numberStack.length = 0;
+			
+			currentNumber = 0;
+			currentOperation = null;
+			currentOperationResult = null;
+			
+			inputDirty = false;
+			
+		}
 		
 	});

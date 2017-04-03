@@ -7,41 +7,37 @@ angular.module("grids")
 			
 			restrict: "E",
 			templateUrl: "grids/calculatorGrid.template.html",
-			link: function (scope, element, attr) {
+			link (scope, element, attr) {
 				
 				let startX = 0;
 				let startY = 0;
-				let x = 0;
-				let y = 0;
+				let posX = 0;
+				let posY = 0;
 				
-				let board = element.find("dh-board-grid");
+				const board = element.find("dh-board-grid");
 				
-				function mousemove (event) {
+				const mousemove = function (event) {
 					
-					y = event.pageY - startY;
-					x = event.pageX - startX;
+					posY = event.pageY - startY;
+					posX = event.pageX - startX;
 					
 					element.css({
 						
-						top: y + "px",
-						left: x + "px"
+						top: `${posY}px`,
+						left: `${posX}px`
 						
 					});
 					
-				}
+				};
 				
-				function mouseup () {
+				const mouseup = function () {
 					
 					$document.off("mousemove", mousemove);
 					$document.off("mouseup", mouseup);
 					
-				}
+				};
 				
-				board.css({
-					
-					cursor: "pointer"
-					
-				});
+				board.css({cursor: "pointer"});
 				
 				element.css({
 					
@@ -50,7 +46,7 @@ angular.module("grids")
 					 * resizing to occur. It is a direct style declaration on
 					 * the DOM element, not through a class.
 					 */
-					position: "relative",
+					position: "relative"
 					
 				});
 				
@@ -58,8 +54,8 @@ angular.module("grids")
 					
 					event.preventDefault();
 					
-					startX = event.pageX - x;
-					startY = event.pageY - y;
+					startX = event.pageX - posX;
+					startY = event.pageY - posY;
 					
 					$document.on("mousemove", mousemove);
 					$document.on("mouseup", mouseup);

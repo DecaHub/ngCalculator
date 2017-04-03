@@ -30,8 +30,8 @@ angular.module("auxiliary")
 		
 		this.getDot = function () {
 			
-			return _dot
+			return _dot;
 			
-		}
+		};
 		
 	});
