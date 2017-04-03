@@ -176,4 +176,20 @@ angular.module("grids")
 			
 		};
 		
+		this.clearBoard = function () {
+			
+			console.log("CLEAR");
+			
+			emptyBoard = true;
+			
+			numberStack.length = 0;
+			
+			currentNumber = 0;
+			currentOperation = null;
+			currentOperationResult = null;
+			
+			inputDirty = false;
+			
+		}
+		
 	});
