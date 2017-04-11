@@ -42,3 +42,29 @@ Operations will be handled as Angular services.
 * +/- sign: assigns a negative or positive sign to the current number in the stack. The positive sign is not shown. 
 
 
+## Set up:
+
+After cloning the project, please run the following:
+
+If you have `yarn` installed:
+
+Note: This requires `yarn v0.16` or higher.
+
+`yarn start`
+
+If you prefer to use `npm`, please modify the `package.json` file `script` property:
+
+From:
+
+`"start": "yarn && bower install && gulp"`
+
+to:
+
+`"start": "npm install && bower install && gulp"`
+
+and then run:
+
+`npm start`
+
+`start` is a script that will install the node and bower packages as well as start the Gulp automatic build workflow. Gulp will be running continuously in the background until you decide to stop it (CTRL + C in the Mac). A browser tab/window will open to display the application. Every time that you make a change to a non-library, non-node-module .css, .html or .js file, the browser will reload and display the changes automatically.
+
