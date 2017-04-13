@@ -81,6 +81,25 @@ angular.module("grids")
 					
 			}
 			
+			
+			if (currentOperationResult % 1 === 0) {
+				
+				console.log(`Result is an integer!`);
+				
+			} else {
+				
+				console.log(`Result is a float!`);
+				
+				console.log(`Old length: ${currentOperationResult.toString().length}`);
+				currentOperationResult = currentOperationResult.toString().substring(0, 16);
+				console.log(`New length: ${currentOperationResult.length}`);
+				
+				currentOperationResult = Number(currentOperationResult);
+				
+			}
+			
+			console.log(`Result: ${currentOperationResult}`);
+			
 			currentNumber = currentOperationResult;
 			
 		};
