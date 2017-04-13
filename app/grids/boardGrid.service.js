@@ -20,6 +20,12 @@ angular.module("grids")
 			
 		}
 		
+		let isInt = function (num) {
+			
+			return num % 1 === 1;
+			
+		};
+		
 		
 		this.appendDigit = function (digit) {
 			
@@ -65,16 +71,56 @@ angular.module("grids")
 			switch (currentOperation) {
 				
 				case "addition":
-					currentOperationResult = digitA + digitB;
+					
+					if (!isInt(digitA) || !isInt(digitB)) {
+						
+						currentOperationResult = parseFloat(digitA) + digitB;
+						
+					} else {
+						
+						currentOperationResult = digitA + digitB;
+						
+					}
+					
 					break;
 				case "subtraction":
-					currentOperationResult = digitA - digitB;
+					
+					if (!isInt(digitA) || !isInt(digitB)) {
+						
+						currentOperationResult = parseFloat(digitA) - digitB;
+						
+					} else {
+						
+						currentOperationResult = digitA - digitB;
+						
+					}
+					
 					break;
 				case "multiplication":
-					currentOperationResult = digitA * digitB;
+					
+					if (!isInt(digitA) || !isInt(digitB)) {
+						
+						currentOperationResult = parseFloat(digitA) * digitB;
+						
+					} else {
+						
+						currentOperationResult = digitA * digitB;
+						
+					}
+					
 					break;
 				case "division":
-					currentOperationResult = digitA / digitB;
+					
+					if (!isInt(digitA) || !isInt(digitB)) {
+						
+						currentOperationResult = parseFloat(digitA) / digitB;
+						
+					} else {
+						
+						currentOperationResult = digitA / digitB;
+						
+					}
+					
 					break;
 				default:
 					console.log("Operation has not been created.");
@@ -82,7 +128,7 @@ angular.module("grids")
 			}
 			
 			
-			if (currentOperationResult % 1 === 0) {
+			if (isInt(currentOperationResult)) {
 				
 				console.log(`Result is an integer!`);
 				
@@ -90,11 +136,17 @@ angular.module("grids")
 				
 				console.log(`Result is a float!`);
 				
-				console.log(`Old length: ${currentOperationResult.toString().length}`);
-				currentOperationResult = currentOperationResult.toString().substring(0, 16);
-				console.log(`New length: ${currentOperationResult.length}`);
-				
-				currentOperationResult = Number(currentOperationResult);
+				if (currentOperationResult < 1) {
+					
+					console.log(currentOperationResult);
+					
+					if (currentOperationResult.toString().length > 16) {
+						
+						currentOperationResult = parseFloat(currentOperationResult).toFixed(15);
+						
+					}
+					
+				}
 				
 			}
 			
@@ -113,7 +165,7 @@ angular.module("grids")
 					
 					executeOperation();
 					
-					numberStack.push(parseInt(currentNumber, 10));
+					numberStack.push(Number(currentNumber));
 					
 					console.log(numberStack);
 					
@@ -138,7 +190,7 @@ angular.module("grids")
 				
 				currentOperation = op;
 				
-				numberStack.push(parseInt(currentNumber, 10));
+				numberStack.push(Number(currentNumber));
 				console.log(numberStack);
 				inputDirty = false;
 				
@@ -158,7 +210,7 @@ angular.module("grids")
 				
 			} else if (numberStack.length === 1 && inputDirty) {
 				
-				numberStack.push(parseInt(currentNumber, 10));
+				numberStack.push(Number(currentNumber));
 				console.log(numberStack);
 				inputDirty = false;
 				
@@ -184,7 +236,7 @@ angular.module("grids")
 				
 				// Operation is complete. Add result to numberStack
 				
-				numberStack.push(parseInt(currentNumber, 10));
+				numberStack.push(Number(currentNumber));
 				
 				console.log(numberStack);
 				
