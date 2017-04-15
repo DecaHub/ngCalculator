@@ -349,8 +349,18 @@ angular.module("grids")
 		this.flipSign = function () {
 			
 			numberStack.pop();
+			console.log("flipSign");
 			
 			currentNumber = currentNumber * -1;
+			if (currentNumber == 0 || emptyBoard) {
+				
+				/**
+				 * Avoid NaN
+				 */
+				
+				return;
+				
+			}
 			
 			numberStack.push(Number(currentNumber));
 			
