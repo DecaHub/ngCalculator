@@ -188,13 +188,13 @@ angular.module("grids")
 				
 				console.log(`Result is a float!`);
 				
-				if (currentOperationResult < 1) {
+				if (currentOperationResult) {
 					
 					console.log(currentOperationResult);
 					
 					if (currentOperationResult.toString().length > 16) {
 						
-						currentOperationResult = parseFloat(currentOperationResult).toFixed(15);
+						currentOperationResult = parseFloat(currentOperationResult).toFixed(14);
 						
 					}
 					
