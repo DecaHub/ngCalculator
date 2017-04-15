@@ -11,7 +11,10 @@ exports.config = {
 	seleniumAddress: "http://localhost:4444/wd/hub",
 	specs: [
 		"basic-input-spec.js",
-		"basic-addition-spec.js"
+		"basic-addition-spec.js",
+		"basic-subtraction-spec.js",
+		"basic-multiplication-spec.js",
+		"basic-division-spec.js"
 	],
 	
 	onPrepare: function () {
