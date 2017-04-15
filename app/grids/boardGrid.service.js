@@ -11,6 +11,8 @@ angular.module("grids")
 		let currentOperation = null;
 		let currentOperationResult = null;
 		
+		let decimalCreated = false;
+		
 		let inputDirty = false;
 		
 		
@@ -29,6 +31,12 @@ angular.module("grids")
 		
 		this.appendDigit = function (digit) {
 			
+			/**
+			 * currentNumber = "" -> prepares board to remove placeholder numbers
+			 * when a new number sequence is detected
+			 */
+			
+			
 			if (emptyBoard) {
 				
 				currentNumber = "";
@@ -44,9 +52,26 @@ angular.module("grids")
 					
 					return;
 					
+				} else if (digit === "." && !decimalCreated) {
+					
+					currentNumber =  "0.";
+					inputDirty = true;
+					decimalCreated = true;
+					return;
+					
 				}
 				
 				currentNumber = "";
+				
+			}
+			
+			if (digit === "." && !decimalCreated) {
+				
+				decimalCreated = true;
+				
+			} else if (digit === ".") {
+				
+				return;
 				
 			}
 			
@@ -258,6 +283,8 @@ angular.module("grids")
 			currentNumber = 0;
 			currentOperation = null;
 			currentOperationResult = null;
+			
+			decimalCreated = false;
 			
 			inputDirty = false;
 			
