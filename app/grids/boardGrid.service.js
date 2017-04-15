@@ -75,7 +75,16 @@ angular.module("grids")
 				
 			}
 			
-			currentNumber += digit;
+			/**
+			 * The current number has to be created as a string, or else,
+			 * if you add the (-) sign in the middle of keying a number
+			 * the number after the (-) will trigger an operation.
+			 */
+			
+			currentNumber += digit.toString();
+			
+			console.log(`currentNumber: ${currentNumber}`);
+			
 			inputDirty = true;
 			
 		};
