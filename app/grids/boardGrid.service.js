@@ -335,6 +335,16 @@ angular.module("grids")
 			
 			inputDirty = false;
 			
+		};
+		
+		this.flipSign = function () {
+			
+			numberStack.pop();
+			
+			currentNumber = currentNumber * -1;
+			
+			numberStack.push(Number(currentNumber));
+			
 		}
 		
 	});
