@@ -147,8 +147,26 @@ angular.module("grids")
 					}
 					
 					break;
+					
+				case "percentage":
+					
+					if (digitB === undefined) {
+						
+						currentOperationResult = parseFloat(digitA / 100);
+						
+					} else {
+						
+						numberStack.push(Number(digitA));
+						numberStack.push(parseFloat(digitA * parseFloat(digitB / 100)));
+						
+						return;
+						
+					}
+					
+					break;
+					
 				default:
-					console.log("Operation has not been created.");
+					console.log(`Operation ${currentOperation} has not been created.`);
 					
 			}
 			
@@ -233,6 +251,13 @@ angular.module("grids")
 				currentOperation = op;
 				console.log(currentOperation);
 				
+				if (op === "percentage") {
+					
+					executeOperation();
+					numberStack.push(Number(currentNumber));
+					
+				}
+				
 			} else if (numberStack.length === 1 && inputDirty) {
 				
 				numberStack.push(Number(currentNumber));
@@ -256,6 +281,28 @@ angular.module("grids")
 			if (numberStack.length === 2) {
 				
 				console.log("Execute Operation");
+				
+				/**
+				 * The current operation could change prior to computation
+				 * when using the percentage operator (%) as a binary operator
+				 */
+				
+				if (op === "percentage") {
+					
+					let ongoingOp = currentOperation;
+					
+					currentOperation = op;
+					executeOperation();
+					
+					currentOperation = ongoingOp;
+					executeOperation();
+					
+					numberStack.push(Number(currentNumber));
+					
+					return;
+					
+				}
+				
 				
 				executeOperation();
 				
