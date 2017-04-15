@@ -348,10 +348,8 @@ angular.module("grids")
 		
 		this.flipSign = function () {
 			
-			numberStack.pop();
 			console.log("flipSign");
 			
-			currentNumber = currentNumber * -1;
 			if (currentNumber == 0 || emptyBoard) {
 				
 				/**
@@ -362,7 +360,22 @@ angular.module("grids")
 				
 			}
 			
-			numberStack.push(Number(currentNumber));
+			
+			if (numberStack.length === 1 && !inputDirty) {
+				
+				let tempNum = numberStack.pop();
+				
+				currentNumber = tempNum * -1;
+				
+				numberStack.push(Number(currentNumber));
+				
+			} else if (numberStack.length > 0) {
+				
+				console.log(numberStack);
+				
+				currentNumber = currentNumber * -1;
+				
+			}
 			
 		}
 		
