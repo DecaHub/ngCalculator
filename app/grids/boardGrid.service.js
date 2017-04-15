@@ -369,7 +369,7 @@ angular.module("grids")
 				
 				numberStack.push(Number(currentNumber));
 				
-			} else if (numberStack.length > 0) {
+			} else {
 				
 				console.log(numberStack);
 				
