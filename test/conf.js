@@ -9,7 +9,9 @@ exports.config = {
 		
 	},
 	seleniumAddress: "http://localhost:4444/wd/hub",
-	specs: ["calc-spec.js"],
+	specs: [
+		"basic-input-spec.js"
+	],
 	
 	onPrepare: function () {
 		
