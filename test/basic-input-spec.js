@@ -163,7 +163,7 @@ let sequenceNumericButtons = function (digitBox) {
 };
 
 
-describe("ngCalculator", function () {
+describe("ngCalculator: Basic Input", function () {
 	
 	beforeEach(function () {
 		
