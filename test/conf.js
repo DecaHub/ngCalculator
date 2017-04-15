@@ -12,7 +12,8 @@ exports.config = {
 	specs: [
 		"basic-input-spec.js",
 		"basic-addition-spec.js",
-		"basic-subtraction-spec.js"
+		"basic-subtraction-spec.js",
+		"basic-multiplication-spec.js"
 	],
 	
 	onPrepare: function () {
