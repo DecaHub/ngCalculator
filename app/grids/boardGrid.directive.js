@@ -37,11 +37,23 @@ angular.module("grids")
 					
 				}, function (newVal, oldVal) {
 					
-					if (newVal > maxWidth) {
+					
+					if (scope.displayNumber.toString().length === 1) {
+						
+						digitBoxFontSize = 48;
+
+						digitBox.css({fontSize: `${digitBoxFontSize}px`});
+
+						return;
+					}
+					
+					while (newVal > maxWidth) {
 						
 						digitBoxFontSize -= 1;
 						
 						digitBox.css({fontSize: `${digitBoxFontSize}px`});
+						
+						newVal = digitBox.width();
 						
 					}
 					

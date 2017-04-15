@@ -1,4 +1,33 @@
-<div ng-class="{'dh-btn': true, 'aux': true, 'dot': aux.label == 'dot'}"
-     ng-attr-clear-board="aux.label === 'clear'">
-	{{::aux.symbol}}
+<div ng-switch="aux.label">
+	
+	<div ng-switch-when="dot">
+		<div class="dh-btn aux dot" dh-dot>
+			{{::aux.symbol}}
+		</div>
+	</div>
+	
+	<div ng-switch-when="clear">
+		<div class="dh-btn aux" clear-board>
+			{{::aux.symbol}}
+		</div>
+	</div>
+	
+	<div ng-switch-when="posneg">
+		<div class="dh-btn aux">
+			{{::aux.symbol}}
+		</div>
+	</div>
+	
+	<div ng-switch-when="percentage">
+		<div class="dh-btn aux">
+			{{::aux.symbol}}
+		</div>
+	</div>
+	
+	<div ng-switch-default>
+		<div class="dh-btn aux">
+			(E)
+		</div>
+	</div>
+	
 </div>

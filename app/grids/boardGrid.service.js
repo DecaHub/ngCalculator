@@ -11,6 +11,8 @@ angular.module("grids")
 		let currentOperation = null;
 		let currentOperationResult = null;
 		
+		let decimalCreated = false;
+		
 		let inputDirty = false;
 		
 		
@@ -20,8 +22,20 @@ angular.module("grids")
 			
 		}
 		
+		let isInt = function (num) {
+			
+			return num % 1 === 1;
+			
+		};
+		
 		
 		this.appendDigit = function (digit) {
+			
+			/**
+			 * currentNumber = "" -> prepares board to remove placeholder numbers
+			 * when a new number sequence is detected
+			 */
+			
 			
 			if (emptyBoard) {
 				
@@ -38,9 +52,26 @@ angular.module("grids")
 					
 					return;
 					
+				} else if (digit === "." && !decimalCreated) {
+					
+					currentNumber =  "0.";
+					inputDirty = true;
+					decimalCreated = true;
+					return;
+					
 				}
 				
 				currentNumber = "";
+				
+			}
+			
+			if (digit === "." && !decimalCreated) {
+				
+				decimalCreated = true;
+				
+			} else if (digit === ".") {
+				
+				return;
 				
 			}
 			
@@ -65,21 +96,86 @@ angular.module("grids")
 			switch (currentOperation) {
 				
 				case "addition":
-					currentOperationResult = digitA + digitB;
+					
+					if (!isInt(digitA) || !isInt(digitB)) {
+						
+						currentOperationResult = parseFloat(digitA) + digitB;
+						
+					} else {
+						
+						currentOperationResult = digitA + digitB;
+						
+					}
+					
 					break;
 				case "subtraction":
-					currentOperationResult = digitA - digitB;
+					
+					if (!isInt(digitA) || !isInt(digitB)) {
+						
+						currentOperationResult = parseFloat(digitA) - digitB;
+						
+					} else {
+						
+						currentOperationResult = digitA - digitB;
+						
+					}
+					
 					break;
 				case "multiplication":
-					currentOperationResult = digitA * digitB;
+					
+					if (!isInt(digitA) || !isInt(digitB)) {
+						
+						currentOperationResult = parseFloat(digitA) * digitB;
+						
+					} else {
+						
+						currentOperationResult = digitA * digitB;
+						
+					}
+					
 					break;
 				case "division":
-					currentOperationResult = digitA / digitB;
+					
+					if (!isInt(digitA) || !isInt(digitB)) {
+						
+						currentOperationResult = parseFloat(digitA) / digitB;
+						
+					} else {
+						
+						currentOperationResult = digitA / digitB;
+						
+					}
+					
 					break;
 				default:
 					console.log("Operation has not been created.");
 					
 			}
+			
+			
+			if (isInt(currentOperationResult)) {
+				
+				console.log(`Result is an integer!`);
+				
+			} else {
+				
+				console.log(`Result is a float!`);
+				
+				if (currentOperationResult < 1) {
+					
+					console.log(currentOperationResult);
+					
+					if (currentOperationResult.toString().length > 16) {
+						
+						currentOperationResult = parseFloat(currentOperationResult).toFixed(15);
+						
+					}
+					
+				}
+				
+			}
+			
+			console.log(`Result: ${currentOperationResult}`);
 			
 			currentNumber = currentOperationResult;
 			
@@ -94,7 +190,7 @@ angular.module("grids")
 					
 					executeOperation();
 					
-					numberStack.push(parseInt(currentNumber, 10));
+					numberStack.push(Number(currentNumber));
 					
 					console.log(numberStack);
 					
@@ -119,7 +215,7 @@ angular.module("grids")
 				
 				currentOperation = op;
 				
-				numberStack.push(parseInt(currentNumber, 10));
+				numberStack.push(Number(currentNumber));
 				console.log(numberStack);
 				inputDirty = false;
 				
@@ -139,7 +235,7 @@ angular.module("grids")
 				
 			} else if (numberStack.length === 1 && inputDirty) {
 				
-				numberStack.push(parseInt(currentNumber, 10));
+				numberStack.push(Number(currentNumber));
 				console.log(numberStack);
 				inputDirty = false;
 				
@@ -165,7 +261,7 @@ angular.module("grids")
 				
 				// Operation is complete. Add result to numberStack
 				
-				numberStack.push(parseInt(currentNumber, 10));
+				numberStack.push(Number(currentNumber));
 				
 				console.log(numberStack);
 				
@@ -187,6 +283,8 @@ angular.module("grids")
 			currentNumber = 0;
 			currentOperation = null;
 			currentOperationResult = null;
+			
+			decimalCreated = false;
 			
 			inputDirty = false;
 			
