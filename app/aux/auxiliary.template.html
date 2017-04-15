@@ -1,25 +1,25 @@
 <div ng-switch="aux.label">
 	
 	<div ng-switch-when="dot">
-		<div class="dh-btn aux dot" dh-dot>
+		<div class="dh-btn aux dot" dh-dot id="{{aux.label}}">
 			{{::aux.symbol}}
 		</div>
 	</div>
 	
 	<div ng-switch-when="clear">
-		<div class="dh-btn aux" clear-board>
+		<div class="dh-btn aux" clear-board id="{{aux.label}}">
 			{{::aux.symbol}}
 		</div>
 	</div>
 	
 	<div ng-switch-when="posneg">
-		<div class="dh-btn aux" dh-posneg>
+		<div class="dh-btn aux" dh-posneg id="{{aux.label}}">
 			{{::aux.symbol}}
 		</div>
 	</div>
 	
 	<div ng-switch-when="percentage">
-		<div class="dh-btn aux" dh-percentage>
+		<div class="dh-btn aux" dh-percentage id="{{aux.label}}">
 			{{::aux.symbol}}
 		</div>
 	</div>

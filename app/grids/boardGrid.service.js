@@ -75,7 +75,16 @@ angular.module("grids")
 				
 			}
 			
-			currentNumber += digit;
+			/**
+			 * The current number has to be created as a string, or else,
+			 * if you add the (-) sign in the middle of keying a number
+			 * the number after the (-) will trigger an operation.
+			 */
+			
+			currentNumber += digit.toString();
+			
+			console.log(`currentNumber: ${currentNumber}`);
+			
 			inputDirty = true;
 			
 		};
@@ -339,11 +348,34 @@ angular.module("grids")
 		
 		this.flipSign = function () {
 			
-			numberStack.pop();
+			console.log("flipSign");
 			
-			currentNumber = currentNumber * -1;
+			if (currentNumber == 0 || emptyBoard) {
+				
+				/**
+				 * Avoid NaN
+				 */
+				
+				return;
+				
+			}
 			
-			numberStack.push(Number(currentNumber));
+			
+			if (numberStack.length === 1 && !inputDirty) {
+				
+				let tempNum = numberStack.pop();
+				
+				currentNumber = tempNum * -1;
+				
+				numberStack.push(Number(currentNumber));
+				
+			} else {
+				
+				console.log(numberStack);
+				
+				currentNumber = currentNumber * -1;
+				
+			}
 			
 		}
 		
