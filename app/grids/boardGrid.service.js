@@ -95,6 +95,55 @@ angular.module("grids")
 
 		};
 		
+		/**
+		 * In Javascript, the maximum number of decimals is 17,
+		 * but floating point arithmetic is not always 100% accurate.
+		 *
+		 * For example:
+		 * let x = 0.2 + 0.1;         // x will be 0.30000000000000004
+		 *
+		 * To solve the problem above, it helps to multiply and divide:
+		 * let x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3
+		 *
+		 * This function calculates the operand with the most digits and
+		 * generates a multiplier and divider that has a leading 1 with
+		 * as many zeroes as there are digits in the longer operand.
+		 * Note: decimal point and negative sign are not included in the
+		 * length.
+		 *
+		 * @param digitA
+		 * @param digitB
+		 * @returns {{numA: number, numB: number, buffer: string}} Modified operands.
+		 * The buffer is the divider.
+		 */
+		
+		let operationAccuracyHelper = function (digitA, digitB) {
+			
+			let tempA = digitA.toString().replace(".", "").replace("-", "");
+			let tempB = digitB.toString().replace(".", "").replace("-", "");
+			
+			let zeroBooster = null;
+			
+			tempA > tempB ? zeroBooster = tempA.length : zeroBooster = tempB.length;
+			
+			let booster = "1";
+			
+			for (let i = 0; i < zeroBooster; i++) {
+				
+				booster += "0";
+				
+			}
+			
+			return {
+				
+				numA: digitA * booster,
+				numB: digitB * booster,
+				buffer: booster
+				
+			}
+			
+		};
+		
 		const executeOperation = function () {
 			
 			console.log(`Executing ${currentOperation}`);
