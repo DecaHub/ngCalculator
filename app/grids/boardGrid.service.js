@@ -11,6 +11,10 @@ angular.module("grids")
 		let currentOperation = null;
 		let currentOperationResult = null;
 		
+		let standByOp = null;
+		let standBy = false;
+		let standByNum = null;
+		
 		let decimalCreated = false;
 		
 		let inputDirty = false;
@@ -272,6 +276,22 @@ angular.module("grids")
 			
 			if (op === "resultant") {
 				
+				if (standBy) {
+					
+					numberStack.push(Number(currentNumber));
+					
+					executeOperation();
+					
+					numberStack.push(Number(currentNumber));
+					
+					numberStack.unshift(standByNum);
+					
+					currentOperation = standByOp;
+					
+					standBy = false;
+					
+				}
+				
 				if (numberStack === 2) {
 					
 					executeOperation();
@@ -329,6 +349,8 @@ angular.module("grids")
 				
 			} else if (numberStack.length === 1 && inputDirty) {
 				
+				console.log(`There is an element in the stack & a new number has been entered`);
+				
 				numberStack.push(Number(currentNumber));
 				console.log(numberStack);
 				inputDirty = false;
@@ -373,6 +395,57 @@ angular.module("grids")
 					
 				}
 				
+				if (currentOperation === "addition" || currentOperation === "subtraction") {
+					
+					if (op === "multiplication" || op === "division") {
+						
+						standBy = true;
+						standByOp = currentOperation;
+						standByNum = numberStack.shift();
+						
+						currentOperation = op;
+						
+						decimalCreated = false;
+						inputDirty = false;
+						
+						return;
+						
+					}
+					
+				}
+				
+				if (currentOperation === "multiplication" || currentOperation === "division") {
+					
+					if ((op === "addition" || op === "subtraction") && standBy) {
+						
+						executeOperation();
+						
+						numberStack.push(Number(currentNumber));
+						
+						numberStack.unshift(standByNum);
+						
+						currentOperation = standByOp;
+						
+						executeOperation();
+
+						numberStack.push(Number(currentNumber));
+						
+						currentOperation = op;
+						
+						
+						standBy = false;
+						standByOp = null;
+						standByNum = null;
+
+						decimalCreated = false;
+						inputDirty = false;
+
+						return;
+						
+					}
+					
+				}
+				
 				
 				executeOperation();
 				
@@ -384,6 +457,9 @@ angular.module("grids")
 				
 				currentOperation = op;
 				console.log(currentOperation);
+				
+				decimalCreated = false;
+				inputDirty = false;
 				
 			}
 			
