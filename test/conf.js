@@ -14,7 +14,10 @@ exports.config = {
 		"basic-addition-spec.js",
 		"basic-subtraction-spec.js",
 		"basic-multiplication-spec.js",
-		"basic-division-spec.js"
+		"basic-division-spec.js",
+		"clear-board-spec.js",
+		"dot-spec.js",
+		"order-operations-spec.js"
 	],
 	
 	onPrepare: function () {
