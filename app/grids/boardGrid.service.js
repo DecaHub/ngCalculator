@@ -151,13 +151,23 @@ angular.module("grids")
 			const digitA = numberStack.shift();
 			const digitB = numberStack.shift();
 			
+			let accuracyBooster = null;
+			let decimalOp = false;
+			
+			if (!isInt(digitA) || !isInt(digitB)) {
+				
+				accuracyBooster = operationAccuracyHelper(digitA, digitB);
+				decimalOp = true;
+				
+			}
+			
 			switch (currentOperation) {
 				
 				case "addition":
 					
-					if (!isInt(digitA) || !isInt(digitB)) {
+					if (decimalOp) {
 						
-						currentOperationResult = parseFloat(digitA) + digitB;
+						currentOperationResult = (accuracyBooster.numA + accuracyBooster.numB) / accuracyBooster.buffer;
 						
 					} else {
 						
@@ -168,9 +178,9 @@ angular.module("grids")
 					break;
 				case "subtraction":
 					
-					if (!isInt(digitA) || !isInt(digitB)) {
+					if (decimalOp) {
 						
-						currentOperationResult = parseFloat(digitA) - digitB;
+						currentOperationResult = (accuracyBooster.numA - accuracyBooster.numB) / accuracyBooster.buffer;
 						
 					} else {
 						
@@ -181,9 +191,9 @@ angular.module("grids")
 					break;
 				case "multiplication":
 					
-					if (!isInt(digitA) || !isInt(digitB)) {
+					if (decimalOp) {
 						
-						currentOperationResult = parseFloat(digitA) * digitB;
+						currentOperationResult = digitA * digitB;
 						
 					} else {
 						
@@ -194,9 +204,9 @@ angular.module("grids")
 					break;
 				case "division":
 					
-					if (!isInt(digitA) || !isInt(digitB)) {
+					if (decimalOp) {
 						
-						currentOperationResult = parseFloat(digitA) / digitB;
+						currentOperationResult = digitA / digitB;
 						
 					} else {
 						
