@@ -15,6 +15,8 @@ for (let i = 0; i < numbersStrings.length; i++) {
 	
 }
 
+ops.set("dot", element(by.id("dot")));
+
 ops.set("add", element(by.id("addition")));
 ops.set("minus", element(by.id("subtraction")));
 ops.set("times", element(by.id("multiplication")));
