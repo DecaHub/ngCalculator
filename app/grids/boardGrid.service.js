@@ -245,6 +245,7 @@ angular.module("grids")
 				numberStack.push(Number(currentNumber));
 				console.log(numberStack);
 				inputDirty = false;
+				decimalCreated = false;
 				
 			}
 			
@@ -272,6 +273,7 @@ angular.module("grids")
 				numberStack.push(Number(currentNumber));
 				console.log(numberStack);
 				inputDirty = false;
+				decimalCreated = false;
 				
 				/**
 				 * This will make the execution block to run.
