@@ -43,7 +43,7 @@ let performComplexOps = function (digitBox, numbers, ops) {
 };
 
 
-describe("ngCalculator: Basic Addition", function () {
+describe("ngCalculator: Complex Operations", function () {
 	
 	beforeEach(function () {
 		
