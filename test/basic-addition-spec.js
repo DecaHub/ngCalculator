@@ -1,4 +1,5 @@
 const tc = require("./test-constants");
+const dialer = require("./dialer").dialer;
 
 let performAdditions = function (digitBox, numbers, ops) {
 	
@@ -6,10 +7,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("2 + 2 = 4", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+		dialer("2 + 2 =");
 			
 			expect(digitBox.getText()).toEqual("4");
 			
@@ -17,12 +15,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("85 + 63 = 148", function () {
 			
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("add").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("equal").click();
+			dialer("85 + 63 =");
 			
 			expect(digitBox.getText()).toEqual("148");
 			
@@ -30,12 +23,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("86 + 64 = 150", function () {
 			
-			numbers.get("8").click();
-			numbers.get("6").click();
-			ops.get("add").click();
-			numbers.get("6").click();
-			numbers.get("4").click();
-			ops.get("add").click();
+			dialer("86 + 64 =");
 			
 			expect(digitBox.getText()).toEqual("150");
 			
@@ -43,18 +31,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("85 + 63 + 80 + 62 = 290", function () {
 			
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("add").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("add").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("add").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("add").click();
+			dialer("85 + 63 + 80 + 62 =");
 			
 			expect(digitBox.getText()).toEqual("290");
 			
@@ -62,18 +39,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("85 + 63 + 80 + 62 = 290", function () {
 			
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("add").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("add").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("add").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("85 + 63 + 80 + 62 =");
 			
 			expect(digitBox.getText()).toEqual("290");
 			
@@ -81,19 +47,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("85 + 63 + 80 + (-)62 = -166", function () {
 			
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("add").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("add").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("add").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("85 + 63 + 80 + (-)62 =");
 			
 			expect(digitBox.getText()).toEqual("-166");
 			
@@ -101,22 +55,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("(-)85 + (-)63 + (-)80 + (-)62 = -42", function () {
 			
-			ops.get("posneg").click();
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("add").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("add").click();
-			ops.get("posneg").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("add").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("(-)85 + (-)63 + (-)80 + (-)62 =");
 			
 			expect(digitBox.getText()).toEqual("-40");
 			
@@ -124,13 +63,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("(-)25 + 25 = 50", function () {
 			
-			ops.get("posneg").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("add").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("equal").click();
+			dialer("(-)25 + 25 =");
 			
 			expect(digitBox.getText()).toEqual("50");
 			
@@ -138,13 +71,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("25 + (-)25 = 0", function () {
 			
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("add").click();
-			ops.get("posneg").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("equal").click();
+			dialer("25 + (-)25 =");
 			
 			expect(digitBox.getText()).toEqual("0");
 			

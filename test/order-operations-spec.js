@@ -1,4 +1,5 @@
 const tc = require("./test-constants");
+const dialer = require("./dialer").dialer;
 
 let performAdditions = function (digitBox, numbers, ops) {
 	
@@ -6,15 +7,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("2 + 3 * 4 * 10 = 122", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("3").click();
-			ops.get("times").click();
-			numbers.get("4").click();
-			ops.get("times").click();
-			numbers.get("1").click();
-			numbers.get("0").click();
-			ops.get("equal").click();
+			dialer("2 + 3 * 4 * 10 =");
 			
 			expect(digitBox.getText()).toEqual("122");
 			
@@ -22,15 +15,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("2 + 3 * 4 * 10 + should get 122", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("3").click();
-			ops.get("times").click();
-			numbers.get("4").click();
-			ops.get("times").click();
-			numbers.get("1").click();
-			numbers.get("0").click();
-			ops.get("add").click();
+			dialer("2 + 3 * 4 * 10 +");
 			
 			expect(digitBox.getText()).toEqual("122");
 			
@@ -38,15 +23,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("2 + 3 * 4 * 10 - should get 122", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("3").click();
-			ops.get("times").click();
-			numbers.get("4").click();
-			ops.get("times").click();
-			numbers.get("1").click();
-			numbers.get("0").click();
-			ops.get("minus").click();
+			dialer("2 + 3 * 4 * 10 -");
 			
 			expect(digitBox.getText()).toEqual("122");
 			
@@ -54,15 +31,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("2 + 3 * 4 * 10 * should get 120", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("3").click();
-			ops.get("times").click();
-			numbers.get("4").click();
-			ops.get("times").click();
-			numbers.get("1").click();
-			numbers.get("0").click();
-			ops.get("times").click();
+			dialer("2 + 3 * 4 * 10 *");
 			
 			expect(digitBox.getText()).toEqual("120");
 			
@@ -70,22 +39,7 @@ let performAdditions = function (digitBox, numbers, ops) {
 		
 		it("2 + 3 * 4 * 10 - 10 / 2 * 4 = 102", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("3").click();
-			ops.get("times").click();
-			numbers.get("4").click();
-			ops.get("times").click();
-			numbers.get("1").click();
-			numbers.get("0").click();
-			ops.get("minus").click();
-			numbers.get("1").click();
-			numbers.get("0").click();
-			ops.get("over").click();
-			numbers.get("2").click();
-			ops.get("times").click();
-			numbers.get("4").click();
-			ops.get("equal").click();
+			dialer("2 + 3 * 4 * 10 - 10 / 2 * 4 =");
 			
 			expect(digitBox.getText()).toEqual("102");
 			

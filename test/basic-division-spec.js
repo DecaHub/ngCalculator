@@ -1,4 +1,5 @@
 const tc = require("./test-constants");
+const dialer = require("./dialer").dialer;
 
 let performDivisions = function (digitBox, numbers, ops) {
 	
@@ -6,10 +7,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 		
 		it("2 / 2 = 1", function () {
 			
-			numbers.get("2").click();
-			ops.get("over").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("2 / 2 =");
 			
 			expect(digitBox.getText()).toEqual("1");
 			
@@ -17,12 +15,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 		
 		it("85 / 63 = 1.34920634920635", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("over").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("equal").click();
+			dialer("85 / 63 =");
 
 			expect(digitBox.getText()).toEqual("1.34920634920635");
 
@@ -30,12 +23,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 
 		it("86 / 64 = 1.34375", function () {
 
-			numbers.get("8").click();
-			numbers.get("6").click();
-			ops.get("over").click();
-			numbers.get("6").click();
-			numbers.get("4").click();
-			ops.get("add").click();
+			dialer("86 / 64 =");
 
 			expect(digitBox.getText()).toEqual("1.34375");
 
@@ -43,18 +31,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 
 		it("85 / 63 / 80 / 62 = 0.00027201740911", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("over").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("over").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("over").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("over").click();
+			dialer("85 / 63 / 80 / 62 =");
 
 			expect(digitBox.getText()).toEqual("0.00027201740911");
 
@@ -62,18 +39,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 
 		it("85 / 63 / 80 / 62 = 0.00027201740911", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("over").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("over").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("over").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("85 / 63 / 80 / 62 =");
 
 			expect(digitBox.getText()).toEqual("0.00027201740911");
 
@@ -81,19 +47,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 
 		it("85 / 63 / 80 / (-)62 = -0.00027201740911", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("over").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("over").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("over").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("85 / 63 / 80 / (-)62 =");
 
 			expect(digitBox.getText()).toEqual("-0.00027201740911");
 
@@ -101,22 +55,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 
 		it("(-)85 / (-)63 / (-)80 / (-)62 = -0.00027201740911", function () {
 
-			ops.get("posneg").click();
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("over").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("over").click();
-			ops.get("posneg").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("over").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("(-)85 / (-)63 / (-)80 / (-)62 =");
 
 			expect(digitBox.getText()).toEqual("-0.00027201740911");
 
@@ -124,13 +63,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 
 		it("(-)25 / 25 = 1", function () {
 
-			ops.get("posneg").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("over").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("equal").click();
+			dialer("(-)25 / 25 =");
 
 			expect(digitBox.getText()).toEqual("1");
 
@@ -138,13 +71,7 @@ let performDivisions = function (digitBox, numbers, ops) {
 
 		it("25 / (-)25 = -1", function () {
 
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("over").click();
-			ops.get("posneg").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("equal").click();
+			dialer("25 / (-)25 =");
 
 			expect(digitBox.getText()).toEqual("-1");
 

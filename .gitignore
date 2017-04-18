@@ -319,3 +319,19 @@ GitHub.sublime-settings
 .idea
 
 /app/dist/
+
+/app/lib/mathjs/bin/
+/app/lib/mathjs/docs/
+/app/lib/mathjs/core.js
+/app/lib/mathjs/HISTORY.md
+/app/lib/mathjs/.bower.json
+/app/lib/mathjs/README.md
+/app/lib/mathjs/CONTRIBUTING.md
+/app/lib/mathjs/lib/
+/app/lib/mathjs/NOTICE
+/app/lib/mathjs/ROADMAP.md
+/app/lib/mathjs/index.js
+/app/lib/mathjs/composer.json
+/app/lib/mathjs/bower.json
+/app/lib/mathjs/examples/
+/app/lib/mathjs/LICENSE
