@@ -2,6 +2,10 @@
 
 Calculator made with Angular 1.6. This is an exercise in component-based architecture. 
 
+See it live: https://decahub.github.io/ngCalculator/
+
+Dedicated to my parents, in Heaven and Earth. With each line of code, we approach a better future for us! 
+
 ## Core components
 
 ### Basic Version
@@ -9,13 +13,13 @@ Calculator made with Angular 1.6. This is an exercise in component-based archite
 * Number buttons.
     * Digits from 0 to 9.
 * Operation buttons.
-    * Division, multiplication, subtraction, addition, compute operation.
+    * Division, multiplication, subtraction, addition, compute operation, calculate percentage.
 * Function buttons.
-    * , clear board.
+    * Clear board.
 * Calculator board.
     * Display current operation and result digits.
 * Symbol buttons.
-    * Percentage sign, +/- sign, decimal point. 
+    * +/- sign, decimal point. 
 
     
 
