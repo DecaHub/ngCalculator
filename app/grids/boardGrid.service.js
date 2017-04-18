@@ -19,6 +19,11 @@ angular.module("grids")
 		
 		let inputDirty = false;
 		
+		math.config({
+			number: 'BigNumber',
+			precision: 20
+		});
+		
 		
 		if (emptyBoard) {
 			
@@ -87,8 +92,6 @@ angular.module("grids")
 			
 			currentNumber += digit.toString();
 			
-			console.log(`currentNumber: ${currentNumber}`);
-			
 			inputDirty = true;
 			
 		};
@@ -99,124 +102,33 @@ angular.module("grids")
 
 		};
 		
-		/**
-		 * In Javascript, the maximum number of decimals is 17,
-		 * but floating point arithmetic is not always 100% accurate.
-		 *
-		 * For example:
-		 * let x = 0.2 + 0.1;         // x will be 0.30000000000000004
-		 *
-		 * To solve the problem above, it helps to multiply and divide:
-		 * let x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3
-		 *
-		 * This function calculates the operand with the most digits and
-		 * generates a multiplier and divider that has a leading 1 with
-		 * as many zeroes as there are digits in the longer operand.
-		 * Note: decimal point and negative sign are not included in the
-		 * length.
-		 *
-		 * @param digitA
-		 * @param digitB
-		 * @returns {{numA: number, numB: number, buffer: string}} Modified operands.
-		 * The buffer is the divider.
-		 */
-		
-		let operationAccuracyHelper = function (digitA, digitB) {
-			
-			let tempA = digitA.toString().replace(".", "").replace("-", "");
-			let tempB = digitB.toString().replace(".", "").replace("-", "");
-			
-			let zeroBooster = null;
-			
-			tempA > tempB ? zeroBooster = tempA.length : zeroBooster = tempB.length;
-			
-			let booster = "1";
-			
-			for (let i = 0; i < zeroBooster; i++) {
-				
-				booster += "0";
-				
-			}
-			
-			return {
-				
-				numA: digitA * booster,
-				numB: digitB * booster,
-				buffer: booster
-				
-			}
-			
-		};
-		
 		const executeOperation = function () {
 			
 			console.log(`Executing ${currentOperation}`);
 			
-			const digitA = numberStack.shift();
-			const digitB = numberStack.shift();
-			
-			let accuracyBooster = null;
-			let decimalOp = false;
-			
-			if (!isInt(digitA) || !isInt(digitB)) {
-				
-				accuracyBooster = operationAccuracyHelper(digitA, digitB);
-				decimalOp = true;
-				
-			}
+			const digitA = math.bignumber(numberStack.shift());
+			const digitB = math.bignumber(numberStack.shift());
 			
 			switch (currentOperation) {
 				
 				case "addition":
 					
-					if (decimalOp) {
-						
-						currentOperationResult = (accuracyBooster.numA + accuracyBooster.numB) / accuracyBooster.buffer;
-						
-					} else {
-						
-						currentOperationResult = digitA + digitB;
-						
-					}
+					currentOperationResult = math.add(digitA, digitB);
 					
 					break;
 				case "subtraction":
 					
-					if (decimalOp) {
-						
-						currentOperationResult = (accuracyBooster.numA - accuracyBooster.numB) / accuracyBooster.buffer;
-						
-					} else {
-						
-						currentOperationResult = digitA - digitB;
-						
-					}
+					currentOperationResult = math.subtract(digitA, digitB);
 					
 					break;
 				case "multiplication":
 					
-					if (decimalOp) {
-						
-						currentOperationResult = digitA * digitB;
-						
-					} else {
-						
-						currentOperationResult = digitA * digitB;
-						
-					}
+					currentOperationResult = math.multiply(digitA, digitB);
 					
 					break;
 				case "division":
 					
-					if (decimalOp) {
-						
-						currentOperationResult = digitA / digitB;
-						
-					} else {
-						
-						currentOperationResult = digitA / digitB;
-						
-					}
+					currentOperationResult = math.divide(digitA, digitB);
 					
 					break;
 					
@@ -228,7 +140,7 @@ angular.module("grids")
 						
 					} else {
 						
-						numberStack.push(Number(digitA));
+						numberStack.push((digitA));
 						numberStack.push(parseFloat(digitA * parseFloat(digitB / 100)));
 						
 						return;
@@ -244,25 +156,55 @@ angular.module("grids")
 			
 			
 			if (isInt(currentOperationResult)) {
-				
+
 				console.log(`Result is an integer!`);
-				
+
 			} else {
-				
+
 				console.log(`Result is a float!`);
-				
+
 				if (currentOperationResult) {
-					
+
 					console.log(currentOperationResult);
+
+					let decimalCounter = 0;
+					let decimalString = currentOperationResult.toString();
+					let dotPlace = null;
+					let beforeDot = 0;
+
+					for (let i = 0; i < decimalString.length; i++) {
+
+						if (decimalString[i] === ".") {
+
+							dotPlace = i;
+							break;
+
+						} else if (!isNaN(decimalString[i])) {
+							
+							beforeDot++;
+							
+						}
 					
-					if (currentOperationResult.toString().length > 16) {
-						
-						currentOperationResult = parseFloat(currentOperationResult).toFixed(14);
-						
 					}
+
+					if (dotPlace !== null) {
+
+						for (let i = dotPlace + 1; i < decimalString.length; i++) {
+
+							decimalCounter++;
+
+						}
 					
+					}
+
+					if (decimalCounter > 14 && beforeDot === 1) {
+
+						currentOperationResult = parseFloat(currentOperationResult).toFixed(14);
+
+					}
+
 				}
-				
+
 			}
 			
 			console.log(`Result: ${currentOperationResult}`);
@@ -278,11 +220,11 @@ angular.module("grids")
 				
 				if (standBy) {
 					
-					numberStack.push(Number(currentNumber));
+					numberStack.push(currentNumber);
 					
 					executeOperation();
 					
-					numberStack.push(Number(currentNumber));
+					numberStack.push(currentNumber);
 					
 					numberStack.unshift(standByNum);
 					
@@ -296,7 +238,7 @@ angular.module("grids")
 					
 					executeOperation();
 					
-					numberStack.push(Number(currentNumber));
+					numberStack.push(currentNumber);
 					
 					console.log(numberStack);
 					
@@ -321,7 +263,7 @@ angular.module("grids")
 				
 				currentOperation = op;
 				
-				numberStack.push(Number(currentNumber));
+				numberStack.push(currentNumber);
 				console.log(numberStack);
 				inputDirty = false;
 				decimalCreated = false;
@@ -343,7 +285,7 @@ angular.module("grids")
 				if (op === "percentage") {
 					
 					executeOperation();
-					numberStack.push(Number(currentNumber));
+					numberStack.push(currentNumber);
 					
 				}
 				
@@ -351,7 +293,7 @@ angular.module("grids")
 				
 				console.log(`There is an element in the stack & a new number has been entered`);
 				
-				numberStack.push(Number(currentNumber));
+				numberStack.push(currentNumber);
 				console.log(numberStack);
 				inputDirty = false;
 				decimalCreated = false;
@@ -389,7 +331,7 @@ angular.module("grids")
 					currentOperation = ongoingOp;
 					executeOperation();
 					
-					numberStack.push(Number(currentNumber));
+					numberStack.push(currentNumber);
 					
 					return;
 					
@@ -420,7 +362,7 @@ angular.module("grids")
 						
 						executeOperation();
 						
-						numberStack.push(Number(currentNumber));
+						numberStack.push(currentNumber);
 						
 						numberStack.unshift(standByNum);
 						
@@ -428,7 +370,7 @@ angular.module("grids")
 						
 						executeOperation();
 
-						numberStack.push(Number(currentNumber));
+						numberStack.push(currentNumber);
 						
 						currentOperation = op;
 						
@@ -451,7 +393,7 @@ angular.module("grids")
 				
 				// Operation is complete. Add result to numberStack
 				
-				numberStack.push(Number(currentNumber));
+				numberStack.push(currentNumber);
 				
 				console.log(numberStack);
 				
@@ -504,7 +446,7 @@ angular.module("grids")
 				
 				currentNumber = tempNum * -1;
 				
-				numberStack.push(Number(currentNumber));
+				numberStack.push(currentNumber);
 				
 			} else {
 				
