@@ -106,8 +106,25 @@ angular.module("grids")
 			
 			console.log(`Executing ${currentOperation}`);
 			
-			const digitA = math.bignumber(numberStack.shift());
-			const digitB = math.bignumber(numberStack.shift());
+			let digitA = null;
+			let digitB = null;
+			
+			if (numberStack.length > 1) {
+				
+				digitA = math.bignumber(numberStack.shift());
+				digitB = math.bignumber(numberStack.shift());
+				
+			} else if (numberStack.length == 1) {
+				
+				digitA = math.bignumber(numberStack.shift());
+				
+			} else {
+				
+				return;
+				
+			}
+			
+			
 			
 			switch (currentOperation) {
 				
@@ -134,14 +151,15 @@ angular.module("grids")
 					
 				case "percentage":
 					
-					if (digitB === undefined) {
+					if (digitB === null) {
 						
-						currentOperationResult = parseFloat(digitA / 100);
+						currentOperationResult = math.divide(digitA,  100);
+						
 						
 					} else {
 						
-						numberStack.push((digitA));
-						numberStack.push(parseFloat(digitA * parseFloat(digitB / 100)));
+						numberStack.push(digitA);
+						numberStack.push(math.multiply(digitA, math.divide(digitB, 100)));
 						
 						return;
 						
