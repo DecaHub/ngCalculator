@@ -335,3 +335,17 @@ GitHub.sublime-settings
 /app/lib/mathjs/bower.json
 /app/lib/mathjs/examples/
 /app/lib/mathjs/LICENSE
+/docs/lib/mathjs/docs/
+/docs/lib/mathjs/LICENSE
+/docs/lib/mathjs/bower.json
+/docs/lib/mathjs/README.md
+/docs/lib/mathjs/examples/
+/docs/lib/mathjs/ROADMAP.md
+/docs/lib/mathjs/composer.json
+/docs/lib/mathjs/index.js
+/docs/lib/mathjs/HISTORY.md
+/docs/lib/mathjs/NOTICE
+/docs/lib/mathjs/bin/
+/docs/lib/mathjs/core.js
+/docs/lib/mathjs/CONTRIBUTING.md
+/docs/lib/mathjs/lib/
