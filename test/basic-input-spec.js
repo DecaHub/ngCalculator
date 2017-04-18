@@ -1,18 +1,19 @@
 const tc = require("./test-constants");
+const dialer = require("./dialer").dialer;
 
 console.log("Basic Input Test");
 
-let individualNumericButtons = function (digitBox, numbers) {
+let individualNumericButtons = function (digitBox) {
 	
 	describe("Pressing individual numeric buttons", function () {
 		
-		for (let i = 0; i < numbers.size; i++) {
+		for (let i = 0; i < 10; i++) {
 			
 			let num = i.toString();
 			
 			it(`should press ${num} and get ${num}`, function () {
 				
-				numbers.get(num).click();
+				dialer(num);
 				
 				expect(digitBox.getText()).toEqual(num);
 				
@@ -32,13 +33,7 @@ let sequenceNumericButtons = function (digitBox) {
 			
 			let sequence = [1, 5, 7];
 			
-			for (let i = 0; i < sequence.length; i++) {
-				
-				let num = sequence[i].toString();
-				
-				element(by.id(num)).click();
-				
-			}
+			dialer("157");
 			
 			expect(digitBox.getText()).toEqual("157");
 			
@@ -46,15 +41,7 @@ let sequenceNumericButtons = function (digitBox) {
 		
 		it(`should create the number 65019 in the display`, function () {
 			
-			let sequence = [6, 5, 0, 1, 9];
-			
-			for (let i = 0; i < sequence.length; i++) {
-				
-				let num = sequence[i].toString();
-				
-				element(by.id(num)).click();
-				
-			}
+			dialer("65019");
 			
 			expect(digitBox.getText()).toEqual("65019");
 			
@@ -62,15 +49,7 @@ let sequenceNumericButtons = function (digitBox) {
 		
 		it(`should create the number 627154535019 in the display`, function () {
 			
-			let sequence = [6, 2, 7, 1, 5, 4, 5, 3, 5, 0, 1, 9];
-			
-			for (let i = 0; i < sequence.length; i++) {
-				
-				let num = sequence[i].toString();
-				
-				element(by.id(num)).click();
-				
-			}
+			dialer("627154535019");
 			
 			expect(digitBox.getText()).toEqual("627154535019");
 			
@@ -78,17 +57,7 @@ let sequenceNumericButtons = function (digitBox) {
 		
 		it(`should create the number -157 in the display`, function () {
 			
-			let sequence = [1, 5, 7];
-			
-			for (let i = 0; i < sequence.length; i++) {
-				
-				let num = sequence[i].toString();
-				
-				element(by.id(num)).click();
-				
-			}
-			
-			element(by.id("posneg")).click();
+			dialer("157(-)");
 			
 			expect(digitBox.getText()).toEqual("-157");
 			
@@ -96,66 +65,26 @@ let sequenceNumericButtons = function (digitBox) {
 		
 		it(`should create the number -157 in the display`, function () {
 			
-			let sequence = [1, 5, 7];
-			
-			for (let i = 0; i < sequence.length; i++) {
-				
-				let num = sequence[i].toString();
-				
-				element(by.id(num)).click();
-				
-				if (i == 1) {
-					
-					element(by.id("posneg")).click();
-					
-				}
-				
-			}
-			
+			dialer("1(-)57");
+
 			expect(digitBox.getText()).toEqual("-157");
-			
+
 		});
 		
 		it(`should create the number -157 in the display`, function () {
 			
-			let sequence = [1, 5, 7];
-			
-			for (let i = 0; i < sequence.length; i++) {
-				
-				let num = sequence[i].toString();
-				
-				element(by.id(num)).click();
-				
-			}
-			
-			element(by.id("posneg")).click();
+			dialer("15(-)7");
 			
 			expect(digitBox.getText()).toEqual("-157");
 			
 		});
-		
+
 		it(`should create the number 157 in the display`, function () {
 			
-			let sequence = [1, 5, 7];
-			
-			for (let i = 0; i < sequence.length; i++) {
-				
-				let num = sequence[i].toString();
-				
-				element(by.id(num)).click();
-				
-				if (i == 0) {
-					
-					element(by.id("posneg")).click();
-					
-				}
-				
-			}
-			
-			element(by.id("posneg")).click();
+			dialer("157(-)(+)");
 			
 			expect(digitBox.getText()).toEqual("157");
-			
+
 		});
 		
 	})

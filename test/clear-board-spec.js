@@ -1,4 +1,5 @@
 const tc = require("./test-constants");
+const dialer = require("./dialer").dialer;
 
 let performClearing = function (digitBox, numbers, ops) {
 	
@@ -6,11 +7,7 @@ let performClearing = function (digitBox, numbers, ops) {
 		
 		it("2 + 2 = 4 then clear and get 0", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
-			ops.get("clear").click();
+			dialer("2 + 2 = 4 C");
 			
 			expect(digitBox.getText()).toEqual("0");
 			
@@ -18,15 +15,7 @@ let performClearing = function (digitBox, numbers, ops) {
 		
 		it("2 + 2 = 4 then clear, then 5 * 2 = 10", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
-			ops.get("clear").click();
-			numbers.get("5").click();
-			ops.get("times").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("2 + 2 = 4 C 5 * 2 = ");
 			
 			expect(digitBox.getText()).toEqual("10");
 			
@@ -35,10 +24,7 @@ let performClearing = function (digitBox, numbers, ops) {
 		
 		it("2 + then clear and get 0", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			ops.get("clear").click();
-			
+			dialer("2 + C ");
 			
 			expect(digitBox.getText()).toEqual("0");
 			
@@ -46,11 +32,7 @@ let performClearing = function (digitBox, numbers, ops) {
 		
 		it("2 + 10 then clear and get 0", function () {
 			
-			numbers.get("2").click();
-			ops.get("add").click();
-			numbers.get("1").click();
-			numbers.get("0").click();
-			ops.get("clear").click();
+			dialer("2 + 10 C");
 			
 			
 			expect(digitBox.getText()).toEqual("0");
@@ -59,12 +41,7 @@ let performClearing = function (digitBox, numbers, ops) {
 		
 		it("should get 0", function () {
 			
-			ops.get("clear").click();
-			ops.get("clear").click();
-			ops.get("clear").click();
-			ops.get("clear").click();
-			ops.get("clear").click();
-			
+			dialer("CCCC");
 			
 			expect(digitBox.getText()).toEqual("0");
 			
@@ -72,12 +49,7 @@ let performClearing = function (digitBox, numbers, ops) {
 		
 		it("85 +, clear, then 63", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("add").click();
-			ops.get("clear").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
+			dialer("85 + C 63");
 
 			expect(digitBox.getText()).toEqual("63");
 

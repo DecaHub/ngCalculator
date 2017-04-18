@@ -1,5 +1,5 @@
 let tc = require("./test-constants");
-
+const dialer = require("./dialer").dialer;
 
 let performSubtraction = function (digitBox, numbers, ops) {
 	
@@ -7,10 +7,7 @@ let performSubtraction = function (digitBox, numbers, ops) {
 		
 		it("2 - 2 = 0", function () {
 			
-			numbers.get("2").click();
-			ops.get("minus").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("2 - 2 =");
 			
 			expect(digitBox.getText()).toEqual("0");
 			
@@ -18,12 +15,7 @@ let performSubtraction = function (digitBox, numbers, ops) {
 		
 		it("85 - 63 = 22", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("minus").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("equal").click();
+			dialer("85 - 63 =");
 
 			expect(digitBox.getText()).toEqual("22");
 
@@ -31,12 +23,7 @@ let performSubtraction = function (digitBox, numbers, ops) {
 
 		it("86 - 64 = 150", function () {
 
-			numbers.get("8").click();
-			numbers.get("6").click();
-			ops.get("minus").click();
-			numbers.get("6").click();
-			numbers.get("4").click();
-			ops.get("minus").click();
+			dialer("86 - 64 =");
 
 			expect(digitBox.getText()).toEqual("22");
 
@@ -44,18 +31,7 @@ let performSubtraction = function (digitBox, numbers, ops) {
 
 		it("85 - 63 - 80 - 62 = -120", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("minus").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("minus").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("minus").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("minus").click();
+			dialer("85 - 63 - 80 - 62 =");
 
 			expect(digitBox.getText()).toEqual("-120");
 
@@ -63,18 +39,7 @@ let performSubtraction = function (digitBox, numbers, ops) {
 
 		it("85 - 63 - 80 - 62 = -120", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("minus").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("minus").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("minus").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("85 - 63 - 80 - 62 =");
 
 			expect(digitBox.getText()).toEqual("-120");
 
@@ -82,19 +47,7 @@ let performSubtraction = function (digitBox, numbers, ops) {
 
 		it("85 - 63 - 80 - (-)62 = -4", function () {
 
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("minus").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("minus").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("minus").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("85 - 63 - 80 - (-)62 =");
 
 			expect(digitBox.getText()).toEqual("-4");
 
@@ -102,22 +55,7 @@ let performSubtraction = function (digitBox, numbers, ops) {
 
 		it("(-)85 - (-)63 - (-)80 - (-)62 = -128", function () {
 
-			ops.get("posneg").click();
-			numbers.get("8").click();
-			numbers.get("5").click();
-			ops.get("minus").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("3").click();
-			ops.get("minus").click();
-			ops.get("posneg").click();
-			numbers.get("8").click();
-			numbers.get("0").click();
-			ops.get("minus").click();
-			ops.get("posneg").click();
-			numbers.get("6").click();
-			numbers.get("2").click();
-			ops.get("equal").click();
+			dialer("(-)85 - (-)63 - (-)80 - (-)62 =");
 
 			expect(digitBox.getText()).toEqual("-130");
 
@@ -125,13 +63,7 @@ let performSubtraction = function (digitBox, numbers, ops) {
 
 		it("(-)25 - 25 = 0", function () {
 
-			ops.get("posneg").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("minus").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("equal").click();
+			dialer("(-)25 - 25 = 0");
 
 			expect(digitBox.getText()).toEqual("0");
 
@@ -139,14 +71,8 @@ let performSubtraction = function (digitBox, numbers, ops) {
 
 		it("25 - (-)25 = -50", function () {
 
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("minus").click();
-			ops.get("posneg").click();
-			numbers.get("2").click();
-			numbers.get("5").click();
-			ops.get("equal").click();
-
+			dialer("25 - (-)25 =");
+			
 			expect(digitBox.getText()).toEqual("-50");
 
 		});
