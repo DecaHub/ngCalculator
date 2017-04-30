@@ -1,15 +1,25 @@
 "use strict";
 
 angular.module("auxiliary")
-	.directive("dhAuxiliary", function () {
+	.directive("dhAuxiliary", ["CentralDataService", function (CentralDataService) {
 		
 		return {
 			
 			restrict: "E",
+			scope: {aux: "<"},
 			templateUrl: "aux/auxiliary.template.html",
-			scope: {aux: "<"}
+			link (scope, element, attr) {
+				
+				element.on("click", function () {
+					
+					CentralDataService.storeCurrentOp(scope.aux);
+					
+				})
+				
+			}
+			
 			
 		};
 		
-	});
+	}]);
 
