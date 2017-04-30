@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("auxiliary")
-	.directive("dhPercentage", ["BoardGridService", function (BoardGridService) {
+	.directive("dhPercentage", ["CentralDataService", function (CentralDataService) {
 		
 		return {
 			
@@ -11,7 +11,9 @@ angular.module("auxiliary")
 					
 					scope.$apply(function () {
 						
-						BoardGridService.setCurrentOperation("percentage");
+						// CentralDataService.storeCurrentOp("percentage");
+						// Percentage is an operation
+						console.log(`Clicking percentage sign`);
 						
 					})
 					

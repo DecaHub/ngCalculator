@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * The purpose of OperationsService is to give data to the operation buttons. 
+ */
+
 angular.module("operations")
 	.service("OperationsService", function () {
 		
