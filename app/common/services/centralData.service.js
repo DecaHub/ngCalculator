@@ -1,35 +1,44 @@
 "use strict";
 
 angular.module("main")
-	.service("CentralDataService", ["$rootScope", function (rootScope) {
+	.service("CentralDataService", ["$rootScope", "OperationLogicService", function (rootScope, OperationLogicService) {
 		
 		let currentDigit = undefined;
 		let currentOp = undefined;
-		
-		let numberStack = [];
-		let opStack = [];
-		
 		let currentNumber = null;
 		
-		let invalidNumber = false;
+		const bundle = {
+			
+			numberStack: [],
+			opStack: [],
+			result: null
+		
+		};
+		
+		const flags = {
+			
+			invalidNumber: false
+			
+		};
+		
 		
 		this.storeCurrentOp = function (op) {
 			
 			currentOp = op;
-			opStack.push(op.label);
+			bundle.opStack.push(op.label);
 			
 			console.log(currentOp.symbol);
-			console.log(opStack);
+			console.log(bundle.opStack);
 			
-			numberStack.push(currentNumber);
-			console.log(numberStack);
+			bundle.numberStack.push(currentNumber);
+			console.log(bundle.numberStack);
 			currentNumber = null;
 			
 		};
 		
 		this.storeCurrentNumber = function (num) {
 			
-			if (invalidNumber) {
+			if (flags.invalidNumber) {
 				
 				return;
 				
@@ -53,7 +62,7 @@ angular.module("main")
 				
 				currentNumber = "Number too large";
 				
-				invalidNumber = true;
+				flags.invalidNumber = true;
 				
 				rootScope.$broadcast("number:change", currentNumber);
 				
