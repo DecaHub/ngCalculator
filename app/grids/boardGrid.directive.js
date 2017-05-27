@@ -3,7 +3,7 @@
 /* global $ */
 
 angular.module("grids")
-	.directive("dhBoardGrid", ["BoardGridService", function (BoardGridService) {
+	.directive("dhBoardGrid", ["CentralDataService", "$rootScope", function (CentralDataService, $rootScope) {
 		
 		return {
 			
@@ -11,49 +11,44 @@ angular.module("grids")
 			templateUrl: "grids/boardGrid.template.html",
 			link (scope, element, attr) {
 				
-				scope.displayNumber = BoardGridService.getCurrentNumber();
-				
-				scope.$watch(function () {
-					
-					return BoardGridService.getCurrentNumber();
-					
-				}, function (newVal) {
-					
-					scope.displayNumber = newVal;
-					
-				});
+				// Initial board value is zero
+				scope.displayNumber = 0;
 				
 				const digitBox = $("#digitBox");
-			
-				let digitBoxFontSize = parseInt($(digitBox).css("font-size"), 10);
 				const digitBoxFontPadding = parseInt($(digitBox).css("padding"), 10);
+				let digitBoxFontSize = parseInt($(digitBox).css("font-size"), 10);
 				
 				const maxWidth = $(".boardGrid").width() - (digitBoxFontPadding * 2);
 				
-				scope.$watch(function () {
+				scope.$on("number:change", function (event, data) {
 					
-					return digitBox.width();
+					console.log(`number:change: ${data}`);
 					
+					scope.displayNumber = data;
 					
-				}, function (newVal, oldVal) {
+					digitBox.html(scope.displayNumber);
 					
+					$rootScope.$broadcast("digitBox:change");
+					
+				});
+				
+				scope.$on("digitBox:change", function (event) {
 					
 					if (scope.displayNumber.toString().length === 1) {
 						
 						digitBoxFontSize = 48;
-
+						
 						digitBox.css({fontSize: `${digitBoxFontSize}px`});
-
+						
 						return;
 					}
 					
-					while (newVal > maxWidth) {
+					while (digitBox.width() > maxWidth) {
 						
 						digitBoxFontSize -= 1;
 						
 						digitBox.css({fontSize: `${digitBoxFontSize}px`});
 						
-						newVal = digitBox.width();
 						
 					}
 					

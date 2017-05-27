@@ -11,7 +11,7 @@ angular.module("auxiliary")
 					
 					scope.$apply(function () {
 						
-						BoardGridService.flipSign();
+						// BoardGridService.flipSign();
 						
 					})
 					
