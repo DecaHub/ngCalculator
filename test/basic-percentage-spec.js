@@ -3,7 +3,7 @@ const dialer = require("./dialer").dialer;
 
 let performPercentage = function (digitBox, numbers, ops) {
 	
-	describe("Perform additions", function () {
+	describe("Perform calculations with percentage", function () {
 		
 		it("2 % gets 0.02", function () {
 			

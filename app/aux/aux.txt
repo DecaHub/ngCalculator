@@ -1,0 +1,2 @@
+An aux component is a discrete unit that represents what an aux button should look like.
+Its purpose is to show the aux it holds and, when pressed, broadcast that aux to the interested party.

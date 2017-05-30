@@ -1,0 +1,2 @@
+A number component is a discrete unit that represents what a number button should look like.
+Its purpose is to show the number it holds and, when pressed, broadcast that number to the interested party.
