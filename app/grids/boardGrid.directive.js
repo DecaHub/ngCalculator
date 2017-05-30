@@ -14,12 +14,14 @@ angular.module("grids")
 				// Initial board value is zero
 				scope.displayNumber = 0;
 				
-				let getWidth = function (el) {
+				const defaultFontSize = 48;
+				
+				const getWidth = function (el) {
 					
-					let cs = getComputedStyle(el);
+					const cs = getComputedStyle(el);
 					
-					let paddingX = parseFloat(cs.paddingLeft) * 2;
-					let borderX = parseFloat(cs.borderLeftWidth) * 2;
+					const paddingX = parseFloat(cs.paddingLeft) * 2;
+					const borderX = parseFloat(cs.borderLeftWidth) * 2;
 					
 					return el.getBoundingClientRect().width - paddingX - borderX;
 					
@@ -27,15 +29,12 @@ angular.module("grids")
 				
 				const digitBox = element[0].querySelector("#digitBox");
 				
-				const digitBoxFontPadding = parseInt(digitBox.style.padding = 10);
-				let digitBoxFontSize = parseInt(digitBox.style.fontSize = 10);
+				const digitBoxFontPadding = parseInt(digitBox.style.padding = 10, 10);
+				let digitBoxFontSize = parseInt(digitBox.style.fontSize = 10, 10);
 				
 				const maxWidth = getWidth(element[0]) - (digitBoxFontPadding * 2);
 				
 				scope.$on("number:change", function (event, data) {
-					
-					console.log(`number:change: ${data}`);
-					console.log(data.toString());
 					
 					scope.displayNumber = data;
 					
@@ -49,11 +48,12 @@ angular.module("grids")
 					
 					if (scope.displayNumber.toString().length === 1) {
 						
-						digitBoxFontSize = 48;
+						digitBoxFontSize = defaultFontSize;
 						
 						digitBox.style.fontSize = `${digitBoxFontSize}px`;
 						
 						return;
+						
 					}
 				
 					while (getWidth(digitBox) > maxWidth) {
