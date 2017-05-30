@@ -3,7 +3,7 @@
 
 .aux {
 	
-	border-bottom: solid $standard-margin $space-grey;
+	//border-bottom: solid $standard-margin $space-grey;
 	
 	font-weight: 400;
 	
@@ -11,15 +11,16 @@
 
 div.auxGrid {
 	
-	dh-auxiliary:nth-child(1) .aux {
+	dh-auxiliary:nth-child(n) .aux {
 		
 		border-right: solid $standard-margin $space-grey;
+		border-bottom: solid $standard-margin $space-grey;
 		
 	}
 	
-	dh-auxiliary:nth-child(2) .aux {
+	dh-auxiliary:nth-child(3) .aux {
 		
-		border-right: solid $standard-margin $space-grey;
+		border-right: 0;
 		
 	}
 	
@@ -27,7 +28,7 @@ div.auxGrid {
 
 .dot {
 	
-	border-bottom: 0;
+	border-bottom: solid 0 red;
 	
 }
 

@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * The purpose of AuxiliaryService is to provide data to the aux components.
+ */
+
 angular.module("auxiliary")
 	.service("AuxiliaryService", function () {
 		

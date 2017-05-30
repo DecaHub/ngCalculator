@@ -3,7 +3,7 @@
 /* global $ */
 
 angular.module("grids")
-	.directive("dhBoardGrid", ["BoardGridService", function (BoardGridService) {
+	.directive("dhBoardGrid", ["CentralDataService", "$rootScope", function (CentralDataService, $rootScope) {
 		
 		return {
 			
@@ -11,49 +11,56 @@ angular.module("grids")
 			templateUrl: "grids/boardGrid.template.html",
 			link (scope, element, attr) {
 				
-				scope.displayNumber = BoardGridService.getCurrentNumber();
+				// Initial board value is zero
+				scope.displayNumber = 0;
 				
-				scope.$watch(function () {
+				const defaultFontSize = 48;
+				
+				const getWidth = function (el) {
 					
-					return BoardGridService.getCurrentNumber();
+					const cs = getComputedStyle(el);
 					
-				}, function (newVal) {
+					const paddingX = parseFloat(cs.paddingLeft) * 2;
+					const borderX = parseFloat(cs.borderLeftWidth) * 2;
 					
-					scope.displayNumber = newVal;
+					return el.getBoundingClientRect().width - paddingX - borderX;
+					
+				};
+				
+				const digitBox = element[0].querySelector("#digitBox");
+				
+				const digitBoxFontPadding = parseInt(digitBox.style.padding = 10, 10);
+				let digitBoxFontSize = parseInt(digitBox.style.fontSize = 10, 10);
+				
+				const maxWidth = getWidth(element[0]) - (digitBoxFontPadding * 2);
+				
+				scope.$on("number:change", function (event, data) {
+					
+					scope.displayNumber = data;
+					
+					digitBox.innerHTML = scope.displayNumber.toString();
+					
+					$rootScope.$broadcast("digitBox:change");
 					
 				});
 				
-				const digitBox = $("#digitBox");
-			
-				let digitBoxFontSize = parseInt($(digitBox).css("font-size"), 10);
-				const digitBoxFontPadding = parseInt($(digitBox).css("padding"), 10);
-				
-				const maxWidth = $(".boardGrid").width() - (digitBoxFontPadding * 2);
-				
-				scope.$watch(function () {
-					
-					return digitBox.width();
-					
-					
-				}, function (newVal, oldVal) {
-					
+				scope.$on("digitBox:change", function (event) {
 					
 					if (scope.displayNumber.toString().length === 1) {
 						
-						digitBoxFontSize = 48;
-
-						digitBox.css({fontSize: `${digitBoxFontSize}px`});
-
+						digitBoxFontSize = defaultFontSize;
+						
+						digitBox.style.fontSize = `${digitBoxFontSize}px`;
+						
 						return;
+						
 					}
-					
-					while (newVal > maxWidth) {
+				
+					while (getWidth(digitBox) > maxWidth) {
 						
 						digitBoxFontSize -= 1;
 						
-						digitBox.css({fontSize: `${digitBoxFontSize}px`});
-						
-						newVal = digitBox.width();
+						digitBox.style.fontSize = `${digitBoxFontSize}px`;
 						
 					}
 					

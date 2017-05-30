@@ -1,0 +1,2 @@
+An operation component is a discrete unit that represents what an operation button should look like.
+Its purpose is to show the operation it holds and, when pressed, broadcast that operation to the interested party.
