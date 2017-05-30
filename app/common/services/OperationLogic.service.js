@@ -294,6 +294,12 @@ angular.module("main")
 				
 			} else if (opObject.label === "posneg") {
 				
+				if (UtilService.isNull(bundle.currentNumber) && UtilService.isEmpty(bundle.numberStack)) {
+					
+					return;
+					
+				}
+				
 				executeOperation(opObject.label, bundle);
 				
 			} else if (opObject.label === "percentage") {
