@@ -640,9 +640,24 @@ gulp.task("clean:docs", function () {
  */
 gulp.task("copy:dist:docs:js", function () {
 	
-	return gulp.src([
-			"app/dist/**/*.js"
-		], {
+	try {
+		
+		ngsource.set({
+			target: "app/dist/"
+		}, []);
+		
+	} catch (error) {
+		
+		log.danger(error.stack);
+		return;
+		
+	}
+	
+	let files = ngsource.get();
+	
+	console.log(files);
+	
+	return gulp.src(files, {
 			base: "app/dist"
 		})
 		.pipe(concat("dist.js"))
