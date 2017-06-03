@@ -77,6 +77,22 @@ let performMultiplications = function (digitBox, numbers, ops) {
 
 		});
 		
+		it("8 * 9 * 34 * 890 * 0 = 0", function () {
+			
+			dialer("8 * 9 * 34 * 890 * 0 =");
+			
+			expect(digitBox.getText()).toEqual("0");
+			
+		});
+		
+		it("8 + 9 / 34 + 890 * 0 = 0", function () {
+			
+			dialer("8 + 9 / 34 + 890 * 0 =");
+			
+			expect(digitBox.getText()).toEqual("8.26470588235294");
+			
+		});
+		
 	});
 	
 };

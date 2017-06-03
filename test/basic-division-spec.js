@@ -76,6 +76,22 @@ let performDivisions = function (digitBox, numbers, ops) {
 			expect(digitBox.getText()).toEqual("-1");
 
 		});
+		
+		it("25 / 0 = Infinity", function () {
+			
+			dialer("25 / 0 =");
+			
+			expect(digitBox.getText()).toEqual("Infinity");
+			
+		});
+		
+		it("2 + 89 * 3 - 100 / 25 / 0 = -Infinity", function () {
+			
+			dialer("2 + 89 * 3 - 100 / 25 / 0 =");
+			
+			expect(digitBox.getText()).toEqual("-Infinity");
+			
+		});
 
 	});
 	

@@ -13,7 +13,8 @@ angular.module("main")
 			stack: [],
 			result: null,
 			currentNumber: null,
-			currentOp: null
+			currentOp: null,
+			dotEntered: false
 		
 		};
 		
