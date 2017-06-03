@@ -14,14 +14,20 @@ angular.module("main")
 			result: null,
 			currentNumber: null,
 			currentOp: null,
-			dotEntered: false
+			dotEntered: false,
+			percentageEntered: false
 		
 		};
 		
 		const flags = {invalidNumber: false};
 		
-		
 		this.storeCurrentOp = function (opObject) {
+			
+			if (bundle.percentageEntered) {
+				
+				bundle.percentageEntered = !bundle.percentageEntered;
+				
+			}
 			
 			OperationLogicService.processOperation(opObject, bundle, flags);
 			
@@ -40,6 +46,12 @@ angular.module("main")
 			if (bundle.currentNumber === null) {
 				
 				bundle.currentNumber = num.data;
+				
+			} else if (bundle.percentageEntered) {
+				
+				bundle.currentNumber = num.data;
+				
+				bundle.percentageEntered = false;
 				
 			} else {
 				

@@ -123,10 +123,9 @@ angular.module("main")
 						
 						currentOperationResult = math.multiply(topOfNumStack, math.divide(bundle.currentNumber, 100));
 						
-						bundle.currentNumber = null;
-						dotEntered = false;
+						bundle.currentNumber = currentOperationResult;
 						
-						$rootScope.$broadcast("number:change", currentOperationResult);
+						bundle.percentageEntered = true;
 						
 						
 					}
@@ -206,6 +205,14 @@ angular.module("main")
 					}
 					
 				}
+				
+			}
+			
+			if (bundle.percentageEntered) {
+				
+				$rootScope.$broadcast("number:change", currentOperationResult);
+				
+				return;
 				
 			}
 			
@@ -328,13 +335,7 @@ angular.module("main")
 				
 			} else {
 				
-				console.log("Storing number");
-				console.log(bundle.currentNumber);
-				
 				if (bundle.currentNumber !== null) {
-					
-					console.log("Number being stored");
-					console.log(bundle.currentNumber);
 					
 					bundle.numberStack.push(Number(bundle.currentNumber));
 					
