@@ -16,7 +16,27 @@ angular.module("main")
 			
 			console.log("**********************************************");
 			console.log("NUM STACK");
-			console.log(bundle.numberStack);
+			
+			let temp = "[";
+			
+			for (let i = 0; i < bundle.numberStack.length; ++i) {
+				
+				if (i === bundle.numberStack.length - 1) {
+					
+					temp += `${bundle.numberStack[i]}`;
+					
+				} else {
+					
+					temp += `${bundle.numberStack[i]}, `;
+					
+				}
+				
+			}
+			
+			temp += "]";
+			
+			console.log(temp);
+			
 			console.log("OP STACK");
 			console.log(bundle.opStack);
 			console.log("FULL STACK");
@@ -103,10 +123,9 @@ angular.module("main")
 						
 						currentOperationResult = math.multiply(topOfNumStack, math.divide(bundle.currentNumber, 100));
 						
-						bundle.currentNumber = null;
-						dotEntered = false;
+						bundle.currentNumber = currentOperationResult;
 						
-						$rootScope.$broadcast("number:change", currentOperationResult);
+						bundle.percentageEntered = true;
 						
 						
 					}
@@ -186,6 +205,14 @@ angular.module("main")
 					}
 					
 				}
+				
+			}
+			
+			if (bundle.percentageEntered) {
+				
+				$rootScope.$broadcast("number:change", currentOperationResult);
+				
+				return;
 				
 			}
 			
@@ -308,18 +335,33 @@ angular.module("main")
 				
 			} else {
 				
-				if (Number(bundle.currentNumber)) {
+				if (bundle.currentNumber !== null) {
 					
 					bundle.numberStack.push(Number(bundle.currentNumber));
 					
+					bundle.currentOp = opObject.label;
+					
+					bundle.currentNumber = null;
+					dotEntered = false;
+					
+					parseCalculation(bundle);
+					
+				} else {
+					
+					if (opObject.label === "resultant") {
+						
+						bundle.opStack.pop();
+						bundle.currentOp = null;
+						
+					} else {
+						
+						bundle.opStack.pop();
+						bundle.currentOp = opObject.label;
+						bundle.opStack.push(opObject.label);
+						
+					}
+					
 				}
-				
-				bundle.currentOp = opObject.label;
-				
-				bundle.currentNumber = null;
-				dotEntered = false;
-				
-				parseCalculation(bundle);
 				
 			}
 			
