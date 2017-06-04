@@ -1,34 +1,74 @@
 @import "../constants";
 
-.operation {
+@media screen and (min-width: 980px) /* Desktop */ {
 	
-	background: $space-orange;
-	
-	color: white;
-	font-size: 170%;
-	font-weight: 300;
-	
-	border-bottom: solid $standard-margin $space-grey;
-	border-left: solid $standard-margin $space-grey;
-	
-	&:active {
+	.operation {
 		
-		background: #B5601C;
-		color: #6F655B;
+		background: $space-orange;
 		
-		border: solid $standard-margin #6F655B;
+		color: white;
+		font-size: 170%;
+		font-weight: 300;
+		
+		border-bottom: solid $standard-margin $space-grey;
+		border-left: solid $standard-margin $space-grey;
+		
+		&:active {
+			
+			background: #B5601C;
+			color: #6F655B;
+			
+			border: solid $standard-margin #6F655B;
+			
+		}
+		
+	}
+	
+	div.operationGrid {
+		
+		dh-operation:last-child  .operation {
+			
+			border-bottom: 0;
+			
+		}
 		
 	}
 	
 }
 
-
-
-div.operationGrid {
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
 	
-	dh-operation:last-child  .operation {
+	.operation {
 		
-		border-bottom: 0;
+		background: $space-orange;
+		
+		color: white;
+		font-size: 220%;
+		font-weight: 300;
+		
+		border-bottom: solid $standard-margin $space-grey;
+		border-left: solid $standard-margin $space-grey;
+		
+		&:active {
+			
+			background: #B5601C;
+			color: #6F655B;
+			
+			border: solid $standard-margin #6F655B;
+			
+		}
+		
+	}
+	
+	
+	
+	div.operationGrid {
+		
+		dh-operation:last-child  .operation {
+			
+			border-bottom: 0;
+			
+		}
 		
 	}
 	

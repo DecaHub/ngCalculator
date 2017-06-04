@@ -1,9 +1,25 @@
 @import "../constants";
 
-.operationGrid {
+@media screen and (min-width: 980px) /* Desktop */ {
 	
-	display: flex;
-	box-sizing: content-box;
-	flex-flow: column nowrap;
+	.operationGrid {
+		
+		display: flex;
+		box-sizing: content-box;
+		flex-flow: column nowrap;
+		
+	}
+	
+}
+
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
+	
+	.operationGrid {
+		
+		display: flex;
+		box-sizing: content-box;
+		flex-flow: column nowrap;
+		
+	}
 	
 }

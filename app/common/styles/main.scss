@@ -3,32 +3,62 @@
 @import "constants";
 @import "reset";
 
-html, body {
-	
-	height: 100%;
-	
-	font-family: $quicksand;
-	
-}
-
-.instructions {
-	
-	padding: $standard-padding * 5;
-	font-size: 120%;
-	
-}
-
-.calc-container {
-	
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%)
-
-}
-
-
 [ng\:cloak], [ng-cloak], .ng-cloak {
 	display: none !important;
+}
+
+@media screen and (min-width: 980px) /* Desktop */ {
+	
+	html, body {
+		
+		height: 100%;
+		
+		font-family: $quicksand;
+		
+	}
+	
+	.instructions {
+		
+		padding: $standard-padding * 5;
+		font-size: 120%;
+		
+	}
+	
+	.calc-container {
+		
+		margin: 0;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%)
+		
+	}
+	
+	
+}
+
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
+	
+	html, body {
+		
+		height: 100vh;
+		width: 100vw;
+		
+		font-family: $quicksand;
+		
+	}
+	
+	.instructions {
+		
+		display: none;
+		
+	}
+	
+	.calc-container {
+		
+		height: 100vh;
+		width: 100vw;
+		
+	}
+	
 }

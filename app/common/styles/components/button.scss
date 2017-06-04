@@ -1,28 +1,64 @@
 @import "../constants";
 
-
-.dh-btn {
+@media screen and (min-width: 980px) /* Desktop */ {
 	
-	display: inline-flex;
-	
-	box-sizing: border-box;
-	
-	flex-direction: row;
-	flex-wrap: nowrap;
-	
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-	
-	height: $button-height;
-	width: $button-width;
-	
-	color: black;
-	background: #CCCCCC;
-	
-	&:active {
+	.dh-btn {
 		
-		background: #A3A3A3;
+		display: inline-flex;
+		
+		box-sizing: border-box;
+		
+		flex-direction: row;
+		flex-wrap: nowrap;
+		
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		
+		height: $button-height;
+		width: $button-width;
+		
+		color: black;
+		background: #CCCCCC;
+		
+		&:active {
+			
+			background: #A3A3A3;
+			
+		}
+		
+	}
+	
+}
+
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
+	
+	.dh-btn {
+		
+		display: inline-flex;
+		
+		vertical-align: bottom;
+		
+		box-sizing: border-box;
+		
+		flex-direction: row;
+		flex-wrap: nowrap;
+		
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		
+		height: calc(80vh / 5);
+		width: calc(75vw / 3);
+		
+		color: black;
+		background: #CCCCCC;
+		
+		&:active {
+			
+			background: #A3A3A3;
+			
+		}
 		
 	}
 	

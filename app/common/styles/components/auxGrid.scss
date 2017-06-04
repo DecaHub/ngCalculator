@@ -1,10 +1,27 @@
 @import "../constants";
 
-.auxGrid {
+@media screen and (min-width: 980px) /* Desktop */ {
 	
-	display: flex;
-	flex-flow: row nowrap;
+	.auxGrid {
+		
+		display: flex;
+		flex-flow: row nowrap;
+		
+		box-sizing: border-box;
+		
+	}
 	
-	box-sizing: border-box;
+}
+
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
+	
+	.auxGrid {
+		
+		display: flex;
+		flex-flow: row nowrap;
+		
+		box-sizing: border-box;
+		
+	}
 	
 }

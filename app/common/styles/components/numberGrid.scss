@@ -3,14 +3,40 @@
 $total-number-buttons-width: $button-width * $number-button-per-row;
 $number-grid-width: $total-number-buttons-width;
 
-.numberGrid {
+@media screen and (min-width: 980px) /* Desktop */ {
 	
-	display: flex;
-	box-sizing: border-box;
+	.numberGrid {
+		
+		display: flex;
+		box-sizing: border-box;
+		
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+		width: $number-grid-width;
+		
+	}
 	
-	flex-direction: row;
-	flex-wrap: wrap;
+}
+
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
 	
-	width: $number-grid-width;
+	.numberGrid {
+		
+		display: flex;
+		//box-sizing: border-box;
+		
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+		width: 75vw;
+		
+	}
+	
+	#dot {
+		
+		width: calc(75vw / 3 * 2);
+		
+	}
 	
 }
