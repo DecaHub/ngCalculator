@@ -1,6 +1,6 @@
 @import "../constants";
 
-@media screen and (min-width: 980px) /* Desktop */ {
+@media screen and (min-width: $max-mobile-width) /* Desktop */ {
 	
 	.operationGrid {
 		
