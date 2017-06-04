@@ -1,34 +1,72 @@
 @import "../constants";
 
-
-.aux {
+@media screen and (min-width: 980px) /* Desktop */ {
 	
-	//border-bottom: solid $standard-margin $space-grey;
-	
-	font-weight: 400;
-	
-}
-
-div.auxGrid {
-	
-	dh-auxiliary:nth-child(n) .aux {
+	.aux {
 		
-		border-right: solid $standard-margin $space-grey;
-		border-bottom: solid $standard-margin $space-grey;
+		font-weight: 400;
 		
 	}
 	
-	dh-auxiliary:nth-child(3) .aux {
+	div.auxGrid {
 		
-		border-right: 0;
+		dh-auxiliary:nth-child(n) .aux {
+			
+			border-right: solid $standard-margin $space-grey;
+			border-bottom: solid $standard-margin $space-grey;
+			
+		}
+		
+		dh-auxiliary:nth-child(3) .aux {
+			
+			border-right: 0;
+			
+		}
+		
+	}
+	
+	.dot {
+		
+		border-bottom: solid 0 red;
 		
 	}
 	
 }
 
-.dot {
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
 	
-	border-bottom: solid 0 red;
+	
+	.aux {
+		
+		//border-bottom: solid $standard-margin $space-grey;
+		
+		font-weight: 300;
+		font-size: 150%;
+		
+	}
+	
+	div.auxGrid {
+		
+		dh-auxiliary:nth-child(n) .aux {
+			
+			border-right: solid $standard-margin $space-grey;
+			border-bottom: solid $standard-margin $space-grey;
+			
+		}
+		
+		dh-auxiliary:nth-child(3) .aux {
+			
+			border-right: 0;
+			
+		}
+		
+	}
+	
+	.dot {
+		
+		border-bottom: solid 0 red;
+		
+	}
 	
 }
 

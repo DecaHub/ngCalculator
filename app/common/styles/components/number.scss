@@ -3,47 +3,101 @@
 $double-width: $button-width * 2;
 $zero-width: $double-width;
 
-.number {
-	
-	background: #D9D9D9;
-	
-	border-bottom: solid $standard-margin $space-grey;
-	
-	font-size: 150%;
-	font-weight: 300;
 
+@media screen and (min-width: 980px) /* Desktop */ {
+	
+	.number {
+		
+		background: #D9D9D9;
+		
+		border-bottom: solid $standard-margin $space-grey;
+		
+		font-size: 150%;
+		font-weight: 300;
+		
+	}
+	
+	div.numberGrid {
+		
+		dh-number:nth-child(3n + 1) .number {
+			
+			border-right: solid $standard-margin $space-grey;
+			
+		}
+		
+		dh-number:nth-child(3n + 2) .number {
+			
+			border-right: solid $standard-margin $space-grey;
+			
+		}
+		
+		dh-number:nth-child(3n + 3) .number {
+			
+			
+		}
+		
+		dh-number:nth-child(n + 10) .number {
+			
+			border-bottom: 0;
+			
+		}
+		
+	}
+	
+	
+	.zero {
+		
+		width: $zero-width;
+		
+	}
+	
 }
 
-div.numberGrid {
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
 	
-	dh-number:nth-child(3n + 1) .number {
+	.number {
 		
-		border-right: solid $standard-margin $space-grey;
+		background: #D9D9D9;
+		
+		border-bottom: solid $standard-margin $space-grey;
+		
+		font-size: 200%;
+		font-weight: 300;
 		
 	}
 	
-	dh-number:nth-child(3n + 2) .number {
+	div.numberGrid {
 		
-		border-right: solid $standard-margin $space-grey;
+		dh-number:nth-child(3n + 1) .number {
+			
+			border-right: solid $standard-margin $space-grey;
+			
+		}
+		
+		dh-number:nth-child(3n + 2) .number {
+			
+			border-right: solid $standard-margin $space-grey;
+			
+		}
+		
+		dh-number:nth-child(3n + 3) .number {
+			
+			
+		}
+		
+		dh-number:nth-child(n + 10) .number {
+			
+			border-bottom: 0;
+			
+		}
 		
 	}
 	
-	dh-number:nth-child(3n + 3) .number {
+	
+	.zero {
 		
+		width: calc(75vw / 3);
 		
 	}
-	
-	dh-number:nth-child(n + 10) .number {
-		
-		border-bottom: 0;
-		
-	}
-	
-}
-
-
-.zero {
-	
-	width: $zero-width;
 	
 }

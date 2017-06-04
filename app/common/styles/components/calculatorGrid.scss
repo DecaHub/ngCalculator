@@ -3,45 +3,91 @@
 $basic-button-width: $button-width * $basic-button-per-row;
 $basic-width: $basic-button-width;
 
-.calculatorGrid {
+@media screen and (min-width: 980px) /* Desktop */ {
 	
-	margin: 0 auto;
+	.calculatorGrid {
+		
+		margin: 0 auto;
+		
+		box-sizing: border-box;
+		
+		width: $basic-width;
+		
+		display: flex;
+		flex-flow: column nowrap;
+		
+		font-family: $lato;
+		
+		border: solid 1px $space-grey;
+		border-radius: 5px;
+		overflow: hidden;
+		
+		box-shadow: 17px 31px 75px -5px rgba(0,0,0,0.32);
+		
+		cursor: default;
+		user-select: none;
+		
+	}
 	
-	box-sizing: border-box;
+	.processes {
+		
+		display: flex;
+		flex-flow: row nowrap;
+		box-sizing: border-box;
+		
+		//margin: $standard-margin;
+		
+	}
 	
-	width: $basic-width;
+	.auxNumberGrid {
+		
+		display: flex;
+		box-sizing: border-box;
+		
+		flex-flow: column nowrap;
+		
+	}
 	
-	display: flex;
-	flex-flow: column nowrap;
-	
-	font-family: $lato;
-	
-	border: solid 1px $space-grey;
-	border-radius: 5px;
-	overflow: hidden;
-	
-	box-shadow: 17px 31px 75px -5px rgba(0,0,0,0.32);
-	
-	cursor: default;
-	user-select: none;
-
 }
 
-.processes {
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
 	
-	display: flex;
-	flex-flow: row nowrap;
-	box-sizing: border-box;
+	.calculatorGrid {
+		
+		box-sizing: border-box;
+		
+		width: 100vw;
+		
+		display: flex;
+		flex-flow: column nowrap;
+		
+		font-family: $lato;
+		
+		border: solid 1px $space-grey;
+		overflow: hidden;
+		
+		cursor: default;
+		user-select: none;
+		
+	}
 	
-	//margin: $standard-margin;
+	.processes {
+		
+		display: flex;
+		flex-flow: row nowrap;
+		box-sizing: border-box;
+		
+		//margin: $standard-margin;
+		
+	}
 	
-}
-
-.auxNumberGrid {
-	
-	display: flex;
-	box-sizing: border-box;
-	
-	flex-flow: column nowrap;
+	.auxNumberGrid {
+		
+		display: flex;
+		box-sizing: border-box;
+		
+		flex-flow: column nowrap;
+		
+	}
 	
 }

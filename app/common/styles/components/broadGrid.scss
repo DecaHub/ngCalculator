@@ -1,29 +1,67 @@
 @import "../constants";
 
-.boardGrid {
+@media screen and (min-width: 980px) /* Desktop */ {
 	
-	position: relative;
-	box-sizing: border-box;
+	.boardGrid {
+		
+		position: relative;
+		box-sizing: border-box;
+		
+		height: $button-height * 1.5;
+		
+		background: $space-grey;
+		color: white;
+		
+		font-weight: 100;
+		
+	}
 	
-	height: $button-height * 1.5;
-	
-	background: $space-grey;
-	color: white;
-	
-	font-weight: 100;
+	#digitBox {
+		
+		position: absolute;
+		
+		box-sizing: border-box;
+		padding: $standard-padding * 2;
+		
+		bottom: 0;
+		right: 0;
+		
+		font-size: 48px;
+		
+	}
 	
 }
 
-#digitBox {
+@media only screen and (max-width: $max-mobile-width) /* Mobile */ {
 	
-	position: absolute;
+	.boardGrid {
+		
+		position: relative;
+		box-sizing: border-box;
+		
+		height: 20vh;
+		width: 100vw;
+		
+		background: $space-grey;
+		color: white;
+		
+		font-weight: 100;
+		
+	}
 	
-	box-sizing: border-box;
-	padding: $standard-padding * 2;
-	
-	bottom: 0;
-	right: 0;
-	
-	font-size: 48px;
+	#digitBox {
+		
+		position: absolute;
+		
+		box-sizing: border-box;
+		padding: $standard-padding * 2;
+		
+		bottom: 0;
+		right: 0;
+		
+		font-size: 400%;
+		
+	}
 	
 }
+
