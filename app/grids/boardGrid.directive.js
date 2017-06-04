@@ -14,7 +14,7 @@ angular.module("grids")
 				// Initial board value is zero
 				scope.displayNumber = 0;
 				
-				const defaultFontSize = 48;
+				const defaultFontSize = 300;
 				
 				const getWidth = function (el) {
 					
@@ -50,7 +50,7 @@ angular.module("grids")
 						
 						digitBoxFontSize = defaultFontSize;
 						
-						digitBox.style.fontSize = `${digitBoxFontSize}px`;
+						digitBox.style.fontSize = `${digitBoxFontSize}%`;
 						
 						return;
 						
@@ -58,9 +58,9 @@ angular.module("grids")
 				
 					while (getWidth(digitBox) > maxWidth) {
 						
-						digitBoxFontSize -= 1;
+						digitBoxFontSize -= 5;
 						
-						digitBox.style.fontSize = `${digitBoxFontSize}px`;
+						digitBox.style.fontSize = `${digitBoxFontSize}%`;
 						
 					}
 					
