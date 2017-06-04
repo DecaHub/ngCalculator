@@ -315,10 +315,11 @@ gulp.task('inject:lib', function () {
 gulp.task("serve", function () {
 	
 	browserSync.init({
+		
 		server: {
 			baseDir: "app"
-		},
-		tunnel: "decahub"
+		}
+	
 	})
 	
 });
