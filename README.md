@@ -2,7 +2,7 @@
 
 Calculator made with Angular 1.6. This is an exercise in component-based architecture. 
 
-See it live: https://decahub.github.io/ngCalculator/
+See it live: https://calculatorjs.com
 
 Dedicated to my parents, in Heaven and Earth. With each line of code, we approach a better future for us! 
 
